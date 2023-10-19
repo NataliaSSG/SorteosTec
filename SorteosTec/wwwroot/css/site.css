@@ -22,12 +22,13 @@ body {
 }
 
 /*HOME PAGE*/
+
 .titulo-home-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0px;
-    padding: 40px;
+    font-size: 40px;
+    padding: 30px;
     font-weight: 600;
     background-color: #f3ec78;
     background-image: linear-gradient(145deg,#7a9ef6, #2b43f7);
@@ -46,32 +47,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 700px;
+    width: 900px;
+    box-shadow:initial;
 }
 
-.col {
-    height: 700px;
+
+.contenedor-texto {
+    /*display: flex*/
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 30px;
+    width: 900px;
+    margin: 0 auto;
 }
 
-.izquierda {
+.sobre {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40%;
-    background: red;
+    font-size: 20px;
+    font-weight: 300;
+    height: 100%;
 }
-
-.derecha {
-    width: 60%;
-    background: green;
-}
-
-.row-derecha {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40%;
-}
-
-
-
