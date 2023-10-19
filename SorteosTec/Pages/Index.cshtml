@@ -33,37 +33,24 @@
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Usuario</span>
-                        <input type="text" placeholder="Escribe tu usuario" required>
+                        <input asp-for="User" type="text" placeholder="Escribe tu usuario" required>
                     </div>
 
                     <div class="input-box">
                         <span class="details">Contraseña</span>
-                        <input type="text" placeholder="Escribe tu contraseña" required>
+                        <input asp-for="Password" type="text" placeholder="Escribe tu contraseña" required>
                     </div>
                 </div>
 
                 <div class="espacio-boton">
                     <input class="boton" type="submit" value="Iniciar sesión" />
                 </div>
-
-                @*@if (Model.formSubmitted)
-            {
-
-                <div class="contenedor-respuesta">
-                    <br />
-                    <p class="error">@ViewData["MensajeError"]</p>
-                    <div class="textito">@ViewData["Textito"]</div>
-                    <div class="nombre-unicornio">@Model.nombreUnicornio</div>
-
-                    @if (Model.showImage)
-                    {
-                        <div class="espacio-imagen">
-                            <img class="imagencita" src="/imagenes/unicornio.png" />
-                        </div>
-                    }
-                </div>
-            }*@
             </form>
+            <div class="row">
+                <div class="col">
+                    <label id="result" style="@(Model.Error ? "font-size: 15px; font-weight: bolder;" : "font-size: 20px;")" class="@(Model.Error ? "text-danger" : "")">@Model.Result</label>
+                </div>
+            </div>
             <div class="registrar">
                 <a asp-page="Registro">¿Aún no tienes una cuenta?</a>
             </div>
