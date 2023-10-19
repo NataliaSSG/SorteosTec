@@ -1,0 +1,106 @@
+﻿@page
+@model SorteosTec.Pages.RegistroModel
+@{
+}
+
+@{
+    Layout = null; // No layout for this page
+}
+
+<!-- PAGINA DE REGISTRO -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SorteosTec.styles.css" asp-append-version="true" />
+</head>
+
+<body class="Registro">
+    <div class="logo">
+        <img src="/imagenes/SorteosTecBlanco.png" />
+    </div>
+    <div class="contenedor-principal">
+        <div class="contenedor">
+            <div class="titulo">¡Crea tu cuenta!</div>
+
+            <form method="post">
+                <div class="user-details">
+
+                    <div class="input-box">
+                        <span class="details">Nombre completo</span>
+                        <input type="text" placeholder="Escribe tu nombre y apellido" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Correo</span>
+                        <input type="text" placeholder="Escribe tu correo" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Usuario</span>
+                        <input type="text" placeholder="Crea un usuario" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Contraseña</span>
+                        <input type="text" placeholder="Crea una contraseña" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Sexo</span>
+                        <select required>
+                            <option value="" disabled selected class="disabled-texto">Selecciona tu sexo</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Fecha de nacimiento</span>
+                        <input type="date" placeholder="Selecciona tu fecha de nacimiento" required>
+                    </div>
+                </div>
+
+                <div class="espacio-boton">
+                    <input class="boton boton-registro" type="submit" value="Crear cuenta" />
+                </div>
+
+                @*@if (Model.formSubmitted)
+                    {
+
+                        <div class="contenedor-respuesta">
+                            <br />
+                            <p class="error">@ViewData["MensajeError"]</p>
+                            <div class="textito">@ViewData["Textito"]</div>
+                            <div class="nombre-unicornio">@Model.nombreUnicornio</div>
+
+                            @if (Model.showImage)
+                            {
+                                <div class="espacio-imagen">
+                                    <img class="imagencita" src="/imagenes/unicornio.png" />
+                                </div>
+                            }
+                        </div>
+                    }*@
+            </form>
+            <div class="registrar">
+                <a asp-page="Home">Checanding</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+
+</html>
+

@@ -1,6 +1,10 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -9,6 +13,30 @@ a.navbar-brand {
 
 a {
   color: #0077cc;
+}
+
+.navbar {
+    padding-top: 0px; /* Adjust as needed */
+    padding-bottom: 0px; /* Adjust as needed */
+    padding-left: 20px;
+    max-height: 80px; /* Replace 60px with your desired max height */
+    overflow: hidden;
+}
+
+.navbar-brand {
+    margin-right: 0; /* Remove margin to decrease height */
+}
+
+.navbar-toggler {
+    margin-right: 0; /* Remove margin to decrease height */
+}
+
+.navbar-collapse {
+    padding: 0; /* Remove padding to decrease height */
+}
+
+.custom-bg {
+    background-color: #7a9ef6; /* Replace with your desired color */
 }
 
 .btn-primary {
@@ -39,11 +67,20 @@ button.accept-policy {
   line-height: inherit;
 }
 
-.footer {
+.image-container {
+    float: right;
+}
+
+.logo-azul {
+    height: 100px;
+    padding-right: 20px;
+}
+
+/*.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
-}
+}*/
 

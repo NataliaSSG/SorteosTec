@@ -1,0 +1,140 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body.Index {
+    margin: 0;
+    background: linear-gradient(145deg,#7a9ef6, #2b43f7);
+    height: 100vh;
+}
+
+body.Registro {
+    margin: 0;
+    background: linear-gradient(145deg,#7FA7EB, #417FE8);
+    height: 100vh;
+}
+
+.logo {
+    display: flex;
+    justify-content: left;
+    padding-left: 50px;
+}
+
+img {
+    width: 300px;
+}
+
+.contenedor-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor {
+    max-width: 900px;
+    width: 100%;
+    background: #ffffff;
+    padding: 30px 35px;
+    border-radius: 5px;
+}
+
+    .contenedor .titulo {
+        font-size: 30px;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .contenedor form .user-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+form .user-details .input-box {
+    margin: 20px 0 12px 0;
+    width: calc(100%/2 - 20px);
+}
+
+.user-details .input-box input, select {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #757575;
+}
+
+.espacio-boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.boton {
+    background: rgb(78, 92, 242);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    width: 140px;
+    height: 40px;
+    color: white;
+}
+
+    .boton:hover {
+        background: #3b50f0;
+    }
+
+    .boton:active {
+        background: #142ded;
+    }
+
+.boton-registro {
+    background: #417FE8;
+}
+
+    .boton-registro:hover {
+        background: #2E73E8;
+    }
+
+    .boton-registro:active {
+        background: #1A66E6;
+    }
+
+.registrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+

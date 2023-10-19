@@ -4,8 +4,78 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Hola, Me LLamo Natalia</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@{
+    Layout = null; // No layout for this page
+}
 
+<!-- PAGINA DE LOGIN -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SorteosTec.styles.css" asp-append-version="true" />
+</head>
+
+<body class="Index">
+    <div class="logo">
+        <img src="/imagenes/SorteosTecBlanco.png" />
+    </div>
+    <br /><br /><br /><br />
+    <div class="contenedor-principal">
+        <div class="contenedor">
+            <div class="titulo">¡Inicia sesión!</div>
+          
+            <form method="post">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Usuario</span>
+                        <input type="text" placeholder="Escribe tu usuario" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Contraseña</span>
+                        <input type="text" placeholder="Escribe tu contraseña" required>
+                    </div>
+                </div>
+
+                <div class="espacio-boton">
+                    <input class="boton" type="submit" value="Iniciar sesión" />
+                </div>
+
+                @*@if (Model.formSubmitted)
+            {
+
+                <div class="contenedor-respuesta">
+                    <br />
+                    <p class="error">@ViewData["MensajeError"]</p>
+                    <div class="textito">@ViewData["Textito"]</div>
+                    <div class="nombre-unicornio">@Model.nombreUnicornio</div>
+
+                    @if (Model.showImage)
+                    {
+                        <div class="espacio-imagen">
+                            <img class="imagencita" src="/imagenes/unicornio.png" />
+                        </div>
+                    }
+                </div>
+            }*@
+            </form>
+            <div class="registrar">
+                <a asp-page="Registro">¿Aún no tienes una cuenta?</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+
+</html>

@@ -1,4 +1,8 @@
-﻿html {
+﻿* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
   font-size: 14px;
 }
 
@@ -14,5 +18,60 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
+/*HOME PAGE*/
+.titulo-home-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0px;
+    padding: 40px;
+    font-weight: 600;
+    background-color: #f3ec78;
+    background-image: linear-gradient(145deg,#7a9ef6, #2b43f7);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.espacio-juego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagen-juego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+}
+
+.col {
+    height: 700px;
+}
+
+.izquierda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    background: red;
+}
+
+.derecha {
+    width: 60%;
+    background: green;
+}
+
+.row-derecha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+}
+
+
+
