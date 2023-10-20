@@ -39,7 +39,8 @@ public class IndexModel : PageModel
         bool containsUsername = UserDetails.testDict.ContainsKey(UserDetails.Username);
 
         //Los datos de inicio de sesion son correctos y estan en el diccionario??
-        if (containsUsername && UserDetails.testDict[UserDetails.Username] == UserDetails.Password)
+        // if (containsUsername && UserDetails.testDict[UserDetails.Username] == UserDetails.Password)
+        if (db.CheckCredentials(UserDetails.Username, UserDetails.Password))
         {
             return RedirectToPage("/Home");
         }
