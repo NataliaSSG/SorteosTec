@@ -136,5 +136,9 @@ a {
     font-size: 14px;
 }
 
+form.validation-summary-valid {
+    margin-top: 10px;
+}
+
 
 
