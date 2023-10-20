@@ -32,6 +32,7 @@ public class IndexModel : PageModel
         }
         return true;
     }
+    public UserDetailsModel UserDetails {get; set;}
     private readonly ILogger<IndexModel> _logger;
 
     public IndexModel(ILogger<IndexModel> logger)
@@ -42,5 +43,15 @@ public class IndexModel : PageModel
     public void OnGet()
     {
 
+    }
+
+    public IActionResult OnPost()
+    {
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
+        return RedirectToPage("/Home");
     }
 }
