@@ -13,23 +13,23 @@ public class MySQLConn
     {
         this.password = password;
     }
-    private string Conn = $"Server=http://localhost:3306; Database=DBName; User=master; Password=Password";
-    public bool Login()
+    private string Conn = $"Server=localhost; Database=TecTrek; User=master; Password=masteruser!";
+    public bool Login(string username, string password)
     {
         MySqlConnection connection = new MySqlConnection(Conn);
+        
         try 
-        { 
-            string Query = $"SELECT * FROM client WHERE username='{username}' AND password='{password}'";
+        {
+            connection.Open(); 
+            string Query = $"SELECT count(*) FROM client WHERE username='{username}' AND password='{password}'";
             MySqlCommand comm = new MySqlCommand(Query, connection);
             using (MySqlDataReader reader = comm.ExecuteReader())
             {
-                if (reader.Read())
+                if (reader.Read() && reader[0].ToString() == "1")
                 {
                     return true;
                 }
-            }
-
-            connection.Open();
+            }            
         } catch (Exception ex)
         {
             return false;
@@ -47,7 +47,7 @@ public class MySQLConn
     private void Parse_Date_Register(){
         //Add parse birthdate from dd-mm-yyyy and separate them 
     }
-    public bool Register()
+    public string Register(string name, string last_name, string gender, string email, string username, string password)
     {
         string username = this.username;
         string password = this.password;
@@ -57,16 +57,25 @@ public class MySQLConn
         MySqlConnection connection = new MySqlConnection(Conn);
         try 
         { 
-            //Add parameters name, last name, gender, email, username, password. and read them from the register page
-            //Call stored procedure that checks if user is not in the database so 
             /* 
              * Change Query to use our stored procedure 
              * Maybe add confirmation mail by using the ms graph skd
              */
-            string Query = $"INSERT INTO client (username, password) VALUES ('{username}', '{password}')";
+            string Query = $"call Register_Player({name, last_name, gender, email, username, password})";
             MySqlCommand comm = new MySqlCommand(Query, connection);
             connection.Open();
-            comm.ExecuteNonQuery();
+            using (MySqlDataReader reader = comm.ExecuteReader()){
+                if (reader.Read()){
+                    console.writeline(reader.ToString());
+                    return reader.ToString();
+                }
+                else {
+                    console.writeline("No data found");
+                    return "No Data Found";
+                
+                }
+            
+            }
         } catch (Exception ex)
         {
             return false;
