@@ -40,4 +40,41 @@ public class MySQLConn
         }
         return true;
     }
+    private bool Parse_Mail(){
+        //Parse email using regex by (text)@(text).(text)
+        return true;
+    }
+    private void Parse_Date_Register(){
+        //Add parse birthdate from dd-mm-yyyy and separate them 
+    }
+    public bool Register()
+    {
+        string username = this.username;
+        string password = this.password;
+        string name = "";
+        string last_name = "";
+        string email = "";
+        MySqlConnection connection = new MySqlConnection(Conn);
+        try 
+        { 
+            //Add parameters name, last name, gender, email, username, password. and read them from the register page
+            //Call stored procedure that checks if user is not in the database so 
+            /* 
+             * Change Query to use our stored procedure 
+             * Maybe add confirmation mail by using the ms graph skd
+             */
+            string Query = $"INSERT INTO client (username, password) VALUES ('{username}', '{password}')";
+            MySqlCommand comm = new MySqlCommand(Query, connection);
+            connection.Open();
+            comm.ExecuteNonQuery();
+        } catch (Exception ex)
+        {
+            return false;
+        }
+        finally 
+        {
+            connection.Close();
+        }
+        return true;
+    }
 }
