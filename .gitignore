@@ -408,3 +408,6 @@ ASALocalRun/
 launch.json
 tasks.json
 Unitled
+
+#  SQL DDL
+SorteosTec/wwwroot/SQL/TecTrek.sql
