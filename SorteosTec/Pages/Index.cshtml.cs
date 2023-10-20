@@ -11,24 +11,26 @@ public class IndexModel : PageModel
     [BindProperty]
     public string Password { get; set; }
     public string Result {get; set;}
-    public string Conn = $"Server={http://localhost:3306}; Database={DBName}; User={Username}; Password={Password}";
+
+    [BindProperty]
+    public bool Error {get; set;}
+    public string Conn = $"Server=http://localhost:3306; Database=DBName; User=master; Password=Password";
     public bool Login()
     {
         MySqlConnection connection = new MySqlConnection(Conn);
         try 
         { 
-            
+
             connection.Open();
-            return true;
         } catch (Exception ex)
         {
-
+            return false;
         }
         finally 
         {
             connection.Close();
-            
         }
+        return true;
     }
     private readonly ILogger<IndexModel> _logger;
 
@@ -42,4 +44,3 @@ public class IndexModel : PageModel
 
     }
 }
-
