@@ -32,37 +32,24 @@
             <form method="post">
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Usuario</span>
-                        <input type="text" placeholder="Escribe tu usuario" required>
-                    </div>
+                    <span class="details">Usuario</span>
+                    <input type="text" asp-for="UserDetails.Username" placeholder="Escribe tu usuario" required>
+                    <span asp-validation-for="UserDetails.Username"></span>
+                </div>
 
-                    <div class="input-box">
-                        <span class="details">Contraseña</span>
-                        <input type="text" placeholder="Escribe tu contraseña" required>
-                    </div>
+                <div class="input-box">
+                    <span class="details">Contraseña</span>
+                    <input type="password" asp-for="UserDetails.Password" placeholder="Escribe tu contraseña" required>
+                    <span asp-validation-for="UserDetails.Password"></span>
+                </div>
                 </div>
 
                 <div class="espacio-boton">
                     <input class="boton" type="submit" value="Iniciar sesión" />
                 </div>
 
-                @*@if (Model.formSubmitted)
-            {
-
-                <div class="contenedor-respuesta">
-                    <br />
-                    <p class="error">@ViewData["MensajeError"]</p>
-                    <div class="textito">@ViewData["Textito"]</div>
-                    <div class="nombre-unicornio">@Model.nombreUnicornio</div>
-
-                    @if (Model.showImage)
-                    {
-                        <div class="espacio-imagen">
-                            <img class="imagencita" src="/imagenes/unicornio.png" />
-                        </div>
-                    }
-                </div>
-            }*@
+                <!-- Mostrar errores de validación -->
+                <div asp-validation-summary="All" class="text-danger"></div>
             </form>
             <div class="registrar">
                 <a asp-page="Registro">¿Aún no tienes una cuenta?</a>
@@ -70,11 +57,6 @@
 
         </div>
     </div>
-
-
-
-
-
 </body>
 
 
