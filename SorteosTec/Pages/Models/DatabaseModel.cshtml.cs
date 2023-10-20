@@ -19,11 +19,43 @@ namespace SorteosTec.Pages
         }
 
         //Register
-        public void InsertClient(string name, string lastName, string gender, string email, string username, string password)
+        public void InsertClient(string fullName, string gender, string email, string username, string password)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
+                string name, lastName;
+
+                splitName(fullName, out name, out lastName);
+
                 connection.Open();
+
+                // Revisamos si el usuario esta presente en la base de datos
+                string queryUsername = "SELECT COUNT(*) FROM client WHERE username = @username";
+                using (MySqlCommand commandUsername = new MySqlCommand(queryUsername, connection))
+                {
+                    commandUsername.Parameters.AddWithValue("@username", username);
+
+                    int countUsername = Convert.ToInt32(commandUsername.ExecuteScalar());
+
+                    if (countUsername > 0)
+                    {
+                        throw new Exception("El nombre de usuario ya está en uso");
+                    }
+                }
+
+                // Revisamos si el correo esta presente en la base de datos
+                string queryEmail = "SELECT COUNT(*) FROM client WHERE email = @email";
+                using (MySqlCommand commandEmail = new MySqlCommand(queryEmail, connection))
+                {
+                    commandEmail.Parameters.AddWithValue("@email", email);
+
+                    int countEmail = Convert.ToInt32(commandEmail.ExecuteScalar());
+
+                    if (countEmail > 0)
+                    {
+                        throw new Exception("El correo electrónico ya está en uso");
+                    }
+                }
 
                 string query = "INSERT INTO client (name, last_name, gender, email, username, pw) " +
                             "VALUES (@name, @lastName, @gender, @email, @username, @password)";
@@ -41,6 +73,14 @@ namespace SorteosTec.Pages
                 }
             }
         }
+
+        private void splitName(string fullName, out string name, out string lastName) {
+            string[] split = fullName.Split(' ');
+            name = split[0];
+            lastName = split[1];
+        }
+
+
 
         //Index
         public bool CheckCredentials(string username, string password)
