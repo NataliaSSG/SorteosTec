@@ -82,7 +82,7 @@ namespace SorteosTec.Pages
 
 
 
-        //Index
+        //Index 
         public bool CheckCredentials(string username, string password)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
