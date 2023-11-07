@@ -10,7 +10,6 @@ public class IndexModel : PageModel
 
     //Objeto de base de datos
     private readonly DatabaseModel db;
-    
 
     public IndexModel( )
     {
