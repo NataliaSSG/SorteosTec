@@ -1,1 +1,1 @@
-SELECT * FROM client;
+SHOW TABLES;
