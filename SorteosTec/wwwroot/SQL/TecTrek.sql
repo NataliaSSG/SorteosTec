@@ -127,34 +127,75 @@ delete from client;
 -- DB 2  --
 
 -- *********************************************** --
-create table add_ons(
-	id_addon int not null auto_increment primary key,
-	coins bigint,
-	lives int,
-	id_client int not null,
-	immunity int,
-	current_skin int
+use TecTrek;
+
+create table client(
+	username varchar(40) not null primary key,
+	first_name varchar(30) not null,
+	last_name varchar(30) not null,
+	birth_date date not null,
+	user_password varchar(200) not null,
+	email varchar(60) not null,
+	sexo tinyint unsigned not null
 );
+
 
 create table items(
 	id_item int not null auto_increment primary key,
+	item_name varchar(50) not null,
+	item_virtual_price int not null,
+	item_real_price float not null,
+	description varchar(250)
 );
 
-create table user_inventory(
 
+create table log_user(
+	id_log int not null auto_increment primary key,
+	id_client varchar(40) not null,
+	log_in timestamp not null,
+	log_out timestamp not null,
+	points int not null,
+	foreign key (id_client) references client(username)
 );
+
 
 create table address(
+	id_address int not null auto_increment primary key,
+	id_client varchar(40) not null,
+	state_name varchar(50) not null,
+	city_name varchar(50) not null,
+	foreign key (id_client) references client(username)
+);
 
+
+create table add_ons(
+	id_add_on int not null auto_increment primary key,
+	id_client varchar(40) not null,
+	coins bigint not null,
+	extra_lives int not null,
+	immunity int not null,
+	current_skin int not null,
+	foreign key (id_client) references client(username)
+);
+
+
+create table user_inventory(
+	id_inventory int not null auto_increment primary key,
+	id_client varchar(40) not null,
+	id_item int not null,
+	quantity int,
+	foreign key (id_client) references client(username),
+	foreign key (id_item) references items(id_item)
 );
 
 
 create table transactions(
-
-);
-
-create table log_user(
-
-);
-
-create table client();
+	id_transaction int not null auto_increment primary key,
+	id_client varchar(40) not null,
+	id_item int not null,
+	quantity int not null,
+	payment_type bool not null,
+	transaction_date timestamp not null,
+	foreign key (id_client) references client(username),
+	foreign key (id_item) references items(id_item)
+)
