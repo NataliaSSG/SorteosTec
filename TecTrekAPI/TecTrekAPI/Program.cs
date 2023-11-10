@@ -2,6 +2,7 @@
 using TecTrekAPI.Data;
 using TecTrekAPI.Models;
 using Microsoft.OpenApi.Services;
+using TecTrekAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Inyección de la capa de servicios de Cliente
+//Inyecciones de las capas de servicios
 builder.Services.AddScoped<ClienteService>();
+builder.Services.AddScoped<AddressService>();
 
 var app = builder.Build();
 
