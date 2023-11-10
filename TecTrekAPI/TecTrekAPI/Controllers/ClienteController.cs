@@ -36,13 +36,13 @@ public class ClienteController : ControllerBase
     public async Task<IActionResult> Create(ClienteModel cliente)
     {
         var createdCliente = await _clienteService.CreateClienteAsync(cliente);
-        return CreatedAtAction(nameof(GetById), new { id = createdCliente.Id }, createdCliente);
+        return CreatedAtAction(nameof(GetById), new { id = createdCliente.id_client}, createdCliente);
     }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, ClienteModel cliente)
     {
-        if (id != cliente.Id)
+        if (id != cliente.id_client)
         {
             return BadRequest();
         }

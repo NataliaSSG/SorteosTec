@@ -15,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Inyección de la capa de servicios de Cliente
+builder.Services.AddScoped<ClienteService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

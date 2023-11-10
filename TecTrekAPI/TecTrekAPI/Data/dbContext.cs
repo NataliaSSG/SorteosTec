@@ -11,7 +11,7 @@ namespace TecTrekAPI.Data
 
 		}
 
-		public DbSet<ClienteModel> Cliente { set; get; }
+		public DbSet<ClienteModel> client { set; get; }
 
 	}
 }

@@ -15,17 +15,17 @@ public class ClienteService
 
     public async Task<List<ClienteModel>> GetAllClientesAsync()
     {
-        return await _context.Cliente.ToListAsync();
+        return await _context.client.ToListAsync();
     }
 
     public async Task<ClienteModel?> GetClienteByIdAsync(int id)
     {
-        return await _context.Cliente.FindAsync(id);
+        return await _context.client.FindAsync(id);
     }
 
     public async Task<ClienteModel> CreateClienteAsync(ClienteModel cliente)
     {
-        _context.Cliente.Add(cliente);
+        _context.client.Add(cliente);
         await _context.SaveChangesAsync();
         return cliente;
     }
@@ -38,10 +38,10 @@ public class ClienteService
 
     public async Task DeleteClienteAsync(int id)
     {
-        var cliente = await _context.Cliente.FindAsync(id);
+        var cliente = await _context.client.FindAsync(id);
         if (cliente != null)
         {
-            _context.Cliente.Remove(cliente);
+            _context.client.Remove(cliente);
             await _context.SaveChangesAsync();
         }
     }
