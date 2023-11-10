@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TecTrekAPI", "TecTrekAPI.csproj", "{8DB4E0B5-48D5-45FA-912F-7698400FB97C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TecTrekAPI", "TecTrekAPI.csproj", "{280C5056-772D-4563-9491-C887361F2CBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8DB4E0B5-48D5-45FA-912F-7698400FB97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DB4E0B5-48D5-45FA-912F-7698400FB97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DB4E0B5-48D5-45FA-912F-7698400FB97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DB4E0B5-48D5-45FA-912F-7698400FB97C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{280C5056-772D-4563-9491-C887361F2CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{280C5056-772D-4563-9491-C887361F2CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{280C5056-772D-4563-9491-C887361F2CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{280C5056-772D-4563-9491-C887361F2CBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {704FE4C1-825E-4671-A861-F3E31333B178}
+		SolutionGuid = {DD0444B9-2C6B-4446-B3C4-9A98D9375C45}
 	EndGlobalSection
 EndGlobal
