@@ -198,4 +198,4 @@ create table transactions(
 	transaction_date timestamp not null,
 	foreign key (id_client) references client(username),
 	foreign key (id_item) references items(id_item)
-)
+);
