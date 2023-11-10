@@ -121,3 +121,40 @@ delete from client;
 
 
 
+
+
+
+-- DB 2  --
+
+-- *********************************************** --
+create table add_ons(
+	id_addon int not null auto_increment primary key,
+	coins bigint,
+	lives int,
+	id_client int not null,
+	immunity int,
+	current_skin int
+);
+
+create table items(
+	id_item int not null auto_increment primary key,
+);
+
+create table user_inventory(
+
+);
+
+create table address(
+
+);
+
+
+create table transactions(
+
+);
+
+create table log_user(
+
+);
+
+create table client();
