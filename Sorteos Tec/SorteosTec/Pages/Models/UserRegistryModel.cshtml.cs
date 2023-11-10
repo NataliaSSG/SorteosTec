@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+
 public class UserRegistryModel
 {
     [BindProperty]
@@ -25,5 +26,6 @@ public class UserRegistryModel
 
     [BindProperty]
     [Required(ErrorMessage = "Inserte su fecha de nacimiento por favor")]
-    public string DateofBirth { get; set; }
+    [DataType(DataType.Date)]
+    public DateTime DateofBirth { get; set; }
 }

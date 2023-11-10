@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
+
+using System.Text.RegularExpressions;
 
 namespace SorteosTec.Pages
 {
@@ -19,9 +22,9 @@ namespace SorteosTec.Pages
         }
 
         //Register
-        public void InsertClient(string fullName, string gender, string email, string username, string password)
+        public void InsertClient(string fullName, int gender, string email, string username, string password, DateTime dob)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString)) 
             {
                 string name, lastName;
 
@@ -57,19 +60,44 @@ namespace SorteosTec.Pages
                     }
                 }
 
-                string query = "INSERT INTO client (name, last_name, gender, email, username, pw) " +
-                            "VALUES (@name, @lastName, @gender, @email, @username, @password)";
+                // En caso de que el correo no coincida con una nomina del tec, admin se mantiene en falso
+                string clientQuery = "INSERT INTO client (first_name, last_name, sexo, email, username, user_password, birth_date) " +
+                            "VALUES (@name, @lastName, @gender, @email, @username, @password, @dob)";
+                
+                // En caso de que el correo coincida con una nomina del tec, admin se cambia a true
+                string adminQuery = "INSERT INTO client (first_name, last_name, sexo, email, username, user_password, birth_date, admin) " +
+                            "VALUES (@name, @lastName, @gender, @email, @username, @password, @dob, true)";
 
-                using (MySqlCommand command = new MySqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@name", name);
-                    command.Parameters.AddWithValue("@lastName", lastName);
-                    command.Parameters.AddWithValue("@gender", gender);
-                    command.Parameters.AddWithValue("@email", email);
-                    command.Parameters.AddWithValue("@username", username);
-                    command.Parameters.AddWithValue("@password", password);
+                //Expresion regular para validar si el correo coincide con la nomina del tec
+                string pattern = @"^E0[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                Regex regex =  new Regex(pattern);
 
-                    command.ExecuteNonQuery();
+
+                if (regex.IsMatch(email)) {
+                    using (MySqlCommand command = new MySqlCommand(adminQuery, connection)) {
+                        command.Parameters.AddWithValue("@name", name);
+                        command.Parameters.AddWithValue("@lastName", lastName);
+                        command.Parameters.AddWithValue("@gender", gender);
+                        command.Parameters.AddWithValue("@email", email);
+                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@dob", dob);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                else {
+                    using (MySqlCommand command = new MySqlCommand(clientQuery, connection)) {
+                        command.Parameters.AddWithValue("@name", name);
+                        command.Parameters.AddWithValue("@lastName", lastName);
+                        command.Parameters.AddWithValue("@gender", gender);
+                        command.Parameters.AddWithValue("@email", email);
+                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@dob", dob);
+
+                        command.ExecuteNonQuery();
+                    }
                 }
             }
         }
@@ -80,8 +108,6 @@ namespace SorteosTec.Pages
             lastName = split[1];
         }
 
-
-
         //Index 
         public bool CheckCredentials(string username, string password)
         {
@@ -89,7 +115,7 @@ namespace SorteosTec.Pages
             {
                 connection.Open();
 
-                string query = "SELECT * FROM client WHERE username = @username AND pw = @password";
+                string query = "SELECT * FROM client WHERE (username = @username OR email = @username) AND user_password = @password";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {

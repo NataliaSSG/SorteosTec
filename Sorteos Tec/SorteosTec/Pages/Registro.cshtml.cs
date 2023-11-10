@@ -25,6 +25,28 @@ namespace SorteosTec.Pages
         }
 
         public IActionResult OnPost() {
+            int gender;
+            string genderString = UserRegistry.Gender;
+
+            //Asignar un valor numérico a cada género
+            switch (genderString)
+            {
+                case "Masculino":
+                    gender = 0;
+                    break;
+
+                case "Femenino":
+                    gender = 1;
+                    break;
+
+                case "Otro":
+                    gender = 2;
+                    break;
+
+                default:
+                    throw new Exception("El género seleccionado no es válido");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -32,7 +54,7 @@ namespace SorteosTec.Pages
 
             try
             {
-                db.InsertClient(UserRegistry.FullName, UserRegistry.Gender, UserRegistry.Email, UserRegistry.Username, UserRegistry.Password);
+                db.InsertClient(UserRegistry.FullName, gender, UserRegistry.Email, UserRegistry.Username, UserRegistry.Password, UserRegistry.DateofBirth);
                 Console.WriteLine("Client inserted successfully");
             }
             catch (Exception ex)
