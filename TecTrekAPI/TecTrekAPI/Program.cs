@@ -20,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<ItemsService>();
+builder.Services.AddScoped<LogInService>();
 
 var app = builder.Build();
 
