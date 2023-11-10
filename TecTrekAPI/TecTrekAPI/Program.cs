@@ -19,6 +19,7 @@ builder.Services.AddSwaggerGen();
 //Inyecciones de las capas de servicios
 builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<ItemsService>();
 
 var app = builder.Build();
 

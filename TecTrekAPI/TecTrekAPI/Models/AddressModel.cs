@@ -8,6 +8,7 @@ namespace TecTrekAPI.Models
 		[Key]
 		public int id_address { set; get; }
 		public int id_client { set; get; }
+		
 		[ForeignKey("id_client")]
 		public ClienteModel id_cliente { set; get; }
 

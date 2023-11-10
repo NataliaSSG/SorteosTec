@@ -13,5 +13,6 @@ namespace TecTrekAPI.Data
 
 		public DbSet<ClienteModel> client { set; get; }
 		public DbSet<AddressModel> address { set; get; }
+		public DbSet<ItemsModel> items { set; get; }
 	}
 }
