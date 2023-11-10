@@ -16,5 +16,6 @@ namespace TecTrekAPI.Data
 		public DbSet<AddressModel> address { set; get; }
 		public DbSet<ItemsModel> items { set; get; }
 		public DbSet<LogInModel> log_user { set; get; }
+		public DbSet<AddOnsModel> add_ons { set; get; }
 	}
 }

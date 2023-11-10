@@ -21,6 +21,7 @@ builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<ItemsService>();
 builder.Services.AddScoped<LogInService>();
+builder.Services.AddScoped<AddOnsService>();
 
 var app = builder.Build();
 
