@@ -17,5 +17,6 @@ namespace TecTrekAPI.Data
 		public DbSet<ItemsModel> items { set; get; }
 		public DbSet<LogInModel> log_user { set; get; }
 		public DbSet<AddOnsModel> add_ons { set; get; }
+		public DbSet<UserInventoryModel> user_inventory { set; get; }
 	}
 }
