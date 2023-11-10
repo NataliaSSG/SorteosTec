@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
 
 using System.Text.RegularExpressions;
+using MySqlX.XDevAPI;
 
 namespace SorteosTec.Pages
 {
@@ -22,8 +23,10 @@ namespace SorteosTec.Pages
         }
 
         //Register
-        public void InsertClient(string fullName, int gender, string email, string username, string password, DateTime dob)
+        public void InsertClient(string fullName, int gender, string email, string username, string password, DateTime dob, string state, string city)
         {
+            int clientId;
+
             using (MySqlConnection connection = new MySqlConnection(connectionString)) 
             {
                 string name, lastName;
@@ -84,6 +87,8 @@ namespace SorteosTec.Pages
                         command.Parameters.AddWithValue("@dob", dob);
 
                         command.ExecuteNonQuery();
+
+                        clientId = (int)command.LastInsertedId;
                     }
                 }
                 else {
@@ -97,8 +102,12 @@ namespace SorteosTec.Pages
                         command.Parameters.AddWithValue("@dob", dob);
 
                         command.ExecuteNonQuery();
+
+                        clientId = (int)command.LastInsertedId;
                     }
                 }
+
+                setAddress(state, city, clientId);
             }
         }
 
@@ -106,6 +115,22 @@ namespace SorteosTec.Pages
             string[] split = fullName.Split(' ');
             name = split[0];
             lastName = split[1];
+        }
+
+        public void setAddress(string state, string city, int clientId) {
+            using (MySqlConnection connection = new MySqlConnection(connectionString)) {
+                connection.Open();
+
+                string query = "INSERT INTO address (state_name, city_name, id_client) VALUES (@state, @city, @clientId)";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection)) {
+                    command.Parameters.AddWithValue("@state", state);
+                    command.Parameters.AddWithValue("@city", city);
+                    command.Parameters.AddWithValue("@clientId", clientId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         //Index 

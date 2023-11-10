@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SorteosTec.Models;
 
 namespace SorteosTec.Pages
 {
@@ -11,10 +12,15 @@ namespace SorteosTec.Pages
     {
         [BindProperty]
         public UserRegistryModel UserRegistry { get; set; }
+        
+        [BindProperty]
+        public UserAddressModel UserAddress { get; set; }
+
         private readonly DatabaseModel db;
 
         public RegistroModel(){
             UserRegistry = new UserRegistryModel();
+            UserAddress = new UserAddressModel();
 
             //Base de datos
             string sqlCredentials = "server=localhost;user=root;password=06022003;database=TecTrek";
@@ -54,7 +60,7 @@ namespace SorteosTec.Pages
 
             try
             {
-                db.InsertClient(UserRegistry.FullName, gender, UserRegistry.Email, UserRegistry.Username, UserRegistry.Password, UserRegistry.DateofBirth);
+                db.InsertClient(UserRegistry.FullName, gender, UserRegistry.Email, UserRegistry.Username, UserRegistry.Password, UserRegistry.DateofBirth, UserAddress.Estado, UserAddress.Municipio);
                 Console.WriteLine("Client inserted successfully");
             }
             catch (Exception ex)

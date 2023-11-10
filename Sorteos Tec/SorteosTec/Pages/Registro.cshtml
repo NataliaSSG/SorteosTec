@@ -74,7 +74,7 @@
                     <!-- INPUT NUEVO ESTADO -->
                     <div class="input-box">
                         <span class="details">Estado</span>
-                        <select required>
+                        <select asp-for="UserAddress.Estado" required>
                             <option value="" disabled selected class="disabled-texto">Selecciona tu estado de residencia</option>
                             <option value="Aguascalientes">Aguascalientes</option>
                             <option value="Baja California">Baja California</option>
@@ -114,7 +114,7 @@
                     <!-- INPUT NUEVO CIUDAD -->
                     <div class="input-box">
                         <span class="details">Ciudad</span>
-                        <input type="text" placeholder="Escribe tu ciudad de residencia" required>
+                        <input asp-for="UserAddress.Municipio" type="text" placeholder="Escribe tu ciudad de residencia" required>
                     </div>
 
                 </div>
