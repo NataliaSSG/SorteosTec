@@ -23,6 +23,7 @@ builder.Services.AddScoped<ItemsService>();
 builder.Services.AddScoped<LogInService>();
 builder.Services.AddScoped<AddOnsService>();
 builder.Services.AddScoped<UserInventoryService>();
+builder.Services.AddScoped<TransactionsService>();
 
 var app = builder.Build();
 
