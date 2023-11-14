@@ -21,7 +21,7 @@ public class UserRegistryModel
     public string Gender { get; set;}
 
     [BindProperty]
-    [EmailAddress(ErrorMessage = "Inserte su contraseña por favor")]
+    [EmailAddress(ErrorMessage = "Inserte un correo válido por favor")]
     public string Email { get; set; }
 
     [BindProperty]

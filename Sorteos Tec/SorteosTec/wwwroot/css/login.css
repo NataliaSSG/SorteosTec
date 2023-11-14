@@ -28,7 +28,7 @@ body.Index {
 body.Registro {
     margin: 0;
     background: linear-gradient(145deg,#7FA7EB, #417FE8);
-    height: 120vh;
+    height: 122vh;
 }
 
 .logo {
@@ -141,5 +141,13 @@ form.validation-summary-valid {
     margin-top: 10px;
 }
 
+.spans-validaciones {
+    color: #DC3545;
+    font-size: 13px;
+}
 
+.text-danger {
+    margin-top: 15px;
+    font-size: 14px;
+}
 
