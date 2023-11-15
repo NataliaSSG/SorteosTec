@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 public class UserRegistryModel
 {
+    //Usar regex para que escribir una palabra sin espacios
     [BindProperty]
     [Required(ErrorMessage = "Cree su nombre de usuario por favor")]
     public string Username { get; set; }
