@@ -17,7 +17,17 @@ namespace TecTrekAPI.Tests
 
 			using (var context = new dbContext(options))
 			{
-				var testClient = new ClienteModel { id_client = 1, first_name = "Test", last_name = "Client", birth_date = new System.DateTime(2021, 1, 1), sexo = 1, email = "test@mail.com", admin = false, user_password = "123456" };
+				var testClient = new ClienteModel { id_client = 1, 
+													first_name = "Test", 
+													last_name = "Client", 
+													birth_date = new System.DateTime(2021, 1, 1), 
+													sexo = 1, 
+													email = "test@mail.com", 
+													admin = false, 
+													user_password = "123456",
+													username = "testUser" 
+												};
+
 				context.client.Add(testClient);
 				await context.SaveChangesAsync();
 
