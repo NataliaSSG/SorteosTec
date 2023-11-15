@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TecTrekAPI.Controllers;
 using TecTrekAPI.Data;
+using TecTrekAPI.Interfaces;
 using TecTrekAPI.Models;
 
 namespace TecTrekAPI.Services
 {
-	public class LogInService
+	public class LogInService : ILogInService
 	{
 		private readonly dbContext _context;
 

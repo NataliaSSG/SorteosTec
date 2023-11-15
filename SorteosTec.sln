@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SorteosTec", "SorteosTec\So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TecTrekAPI", "TecTrekAPI\TecTrekAPI.csproj", "{66E87760-4918-4B00-A9E5-0FCBABD0507B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{F2D1FDE3-C9FC-4B9E-8F22-918B77531893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{66E87760-4918-4B00-A9E5-0FCBABD0507B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66E87760-4918-4B00-A9E5-0FCBABD0507B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66E87760-4918-4B00-A9E5-0FCBABD0507B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D1FDE3-C9FC-4B9E-8F22-918B77531893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D1FDE3-C9FC-4B9E-8F22-918B77531893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D1FDE3-C9FC-4B9E-8F22-918B77531893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D1FDE3-C9FC-4B9E-8F22-918B77531893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

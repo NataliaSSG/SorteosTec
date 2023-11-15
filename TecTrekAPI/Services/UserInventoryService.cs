@@ -2,11 +2,12 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TecTrekAPI.Data;
+using TecTrekAPI.Interfaces;
 using TecTrekAPI.Models;
 
 namespace TecTrekAPI.Services
 {
-	public class UserInventoryService
+	public class UserInventoryService : UserInventoryServiceI
 	{
 		private readonly dbContext _context;
 
