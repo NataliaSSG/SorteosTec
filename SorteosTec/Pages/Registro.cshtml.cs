@@ -23,7 +23,7 @@ namespace SorteosTec.Pages
             UserAddress = new UserAddressModel();
 
             //Base de datos
-            string sqlCredentials = "server=localhost;user=root;password=06022003;database=TecTrek";
+            string sqlCredentials = "server=localhost;user=root;password=;database=TecTrek";
             db = new DatabaseModel(sqlCredentials);
         }
         public void OnGet()

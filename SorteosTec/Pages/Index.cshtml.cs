@@ -16,7 +16,7 @@ public class IndexModel : PageModel
         UserDetails = new UserDetailsModel(); //Objeto de la clase UserDetailsModel, para accdeer a sus propiedades
 
         //Base de datos
-        string sqlCredentials = "server=localhost;user=root;password=06022003;database=TecTrek";
+        string sqlCredentials = "server=localhost;user=root;password=;database=TecTrek";
         db = new DatabaseModel(sqlCredentials);
     }
 

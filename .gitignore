@@ -1,3 +1,6 @@
+# Connection String Containers
+../SorteosTec/TecTrekAPI/appsettings.json
+
 # globs
 Makefile.in
 *.userprefs
@@ -408,5 +411,3 @@ ASALocalRun/
 launch.json
 tasks.json
 Unitled
-
-#  SQL DDL
