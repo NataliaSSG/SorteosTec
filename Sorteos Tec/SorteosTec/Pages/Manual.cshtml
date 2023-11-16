@@ -1,0 +1,90 @@
+﻿@page
+@model SorteosTec.Pages.ManualModel
+@{
+}
+
+@{
+    Layout = null; // No layout for this page
+}
+
+<!-- PAGINA DE MANUAL -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/manual.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SorteosTec.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar">
+            <a asp-page="/Home">Inicio</a>
+            <a asp-page="/Manual">Manual</a>
+            <a asp-page="/Tienda">Tienda</a>
+        </nav>
+
+        <a class="logo" asp-page="/Home">
+            <img class="logo-azul" src="/imagenes/SorteosTecBlanco.png">
+        </a>
+
+    </header>
+
+    <div class="background">
+
+        <div class="title-space">
+            <h1>Aprende a jugar: </h1>
+        </div>
+
+        <div class="text-space">
+            <h2>En este juego, tú eres <span class="color">Sorball</span></h2>
+        </div>
+
+        <div class="text-space">
+            <ul>
+                <li>Oprime la tecla espaciadora para saltar.</li>
+                <li>¡Evita las columnas y colecciona monedas para comprar premios en la tienda!</li>
+                <li>Cuentas con una sola vida, ¡sobrevive para conseguir reputación y desbloquear los siguientes niveles!</li>
+            </ul>
+        </div>
+
+        <div class="text-space">
+            <h2>Revisa algunos de los sorteos que existen en Sorteos Tec: </h2>
+        </div>
+
+        <div class="image-space">
+            <img src="/imagenes/sorteos.png">
+        </div>
+
+        <div class="text-space">
+            <h2>
+                El juego cuenta con 7 niveles, uno con la temática de cada sorteo mostrado previamente.
+                Pero, ¡cuidado! A partir del segundo nivel, cada nivel tiene su propio enémigo.
+                Checa los siguientes detalles.
+            </h2>
+        </div>
+
+        <div class="text-space text-space2">
+            <ul>
+                <li><span class="level">Nivel 1:</span> En este nivel solo debes esquivar las columnas. </li>
+                <li><span class="level">Nivel 2:</span> ¡Esquiva las pelotas o te restarán 5 puntos (el juego termina si tu puntaje es negativo)!</li>
+                <li><span class="level">Nivel 3:</span> ¡Cuidado con las almohadas! Chocar con ellas te restará una moneda. </li>
+                <li><span class="level">Nivel 4:</span> Mantente alerta por los cambios en la gravedad (se altera cada 5 segundos). </li>
+                <li><span class="level">Nivel 5:</span> ¡Consigue todos los pasaportes que puedas, te darán puntos! </li>
+                <li><span class="level">Nivel 6:</span> ¡Esquiva los relámpagos, pues ocasionan que el juego rote! </li>
+                <li><span class="level">Nivel 7:</span> Aquí encontrarás una mezcla de todos los niveles, ¡exito! </li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

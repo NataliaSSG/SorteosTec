@@ -7,20 +7,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SorteosTec.Pages
 {
-    public class TiendaModel : PageModel
+	public class CompraModel : PageModel
     {
-
-        [BindProperty]
-        public int ProductId { get; set; }
-
         public void OnGet()
         {
-            ProductId = 0;
-        }
-
-        public void OnPost()
-        {
-            Response.Redirect($"Compra?ProductId={ProductId}");
         }
     }
 }

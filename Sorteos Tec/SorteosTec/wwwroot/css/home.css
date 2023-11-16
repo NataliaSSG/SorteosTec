@@ -1,0 +1,45 @@
+﻿
+body {
+}
+
+* {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.text-space {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 30px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+    .text-space p {
+        font-size: 23px;
+        font-weight: 300;
+        height: 100%;
+    }
+
+    .text-space a {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 500;
+        color: #2b43f7;
+        height: 100%;
+    }
+
+.game-space {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+    .game-space .game-pic {
+        width: 900px;
+        box-shadow: initial;
+    }
+

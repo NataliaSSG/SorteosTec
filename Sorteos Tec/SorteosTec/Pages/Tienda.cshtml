@@ -3,3 +3,207 @@
 @{
 }
 
+@{
+    Layout = null; // No layout for this page
+}
+
+<!-- PAGINA DE TIENDA -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/tienda.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SorteosTec.styles.css" asp-append-version="true" />
+</head>
+
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <a asp-page="/Home">Inicio</a>
+            <a asp-page="/Manual">Manual</a>
+            <a asp-page="/Tienda">Tienda</a>
+        </nav>
+
+        <a class="logo" asp-page="/Home">
+            <img class="logo-azul" src="/imagenes/SorteosTecBlanco.png">
+        </a>
+
+    </header>
+
+    <div class="title-space">
+        <h1>¡Bienvenido a la tienda!</h1>
+    </div>
+
+    <div class="product-title">
+        <h1>Lootboxes</h1>
+    </div>
+
+    <section class="product-container">
+
+
+        <form method="post">
+            <div class="product-box">
+                <img class="product-pic" src="/imagenes/lootbox1.png">
+                <h3>Lootbox 1</h3>
+                <ul>
+                    <li><span>Precio real: </span>$100.00 MXN</li>
+                    <li><span>Precio virtual: </span>500 monedas</li>
+                </ul>
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <p>Detalles sobre contenido: </p>
+                        <ul>
+                            <li>Sorball rosa: 50%</li>
+                            <li>Sorball roja: 25%</li>
+                            <li>Sorball naranja: 15%</li>
+                            <li>Sorball verde: 10%</li>
+                        </ul>
+                        <input class="button" type="submit" value="Comprar" />
+                    </div>
+                </div>
+                <input type="hidden" asp-for="ProductId" value="1" />
+
+            </div>
+        </form>
+
+
+        <form method="post">
+            <div class="product-box">
+                <img class="product-pic" src="/imagenes/lootbox1.png">
+                <h3>Lootbox 2</h3>
+                <ul>
+                    <li><span>Precio real: </span>$200.00 MXN</li>
+                    <li><span>Precio virtual: </span>1000 monedas</li>
+                </ul>
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <p>Detalles sobre contenido: </p>
+                        <ul>
+                            <li>800 monedas: 50%</li>
+                            <li>2000 monedas: 30% </li>
+                            <li>5000 monedas: 20%</li>
+                            <li>10% descuento en boleto: 10%</li>
+                        </ul>
+                        <input class="button" type="submit" value="Comprar" />
+                    </div>
+                </div>
+                <input type="hidden" asp-for="ProductId" value="2" />
+            </div>
+        </form>
+
+
+        <form method="post">
+            <div class="product-box">
+                <img class="product-pic" src="/imagenes/lootbox1.png">
+                <h3>Lootbox 3</h3>
+                <ul>
+                    <li><span>Precio real: </span>$300.00 MXN</li>
+                    <li><span>Precio virtual: </span>1500 monedas</li>
+                </ul>
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <p>Detalles sobre contenido: </p>
+                        <ul>
+                            <li>1200 monedas: 30%</li>
+                            <li>5000 monedas: 30% </li>
+                            <li>10% descuento en boleto: 30%</li>
+                            <li>20% descuento en boleto: 10%</li>
+                        </ul>
+                        <input class="button" type="submit" value="Comprar" />
+                    </div>
+                </div>
+                <input type="hidden" asp-for="ProductId" value="3" />
+            </div>
+        </form>
+
+
+    </section>
+
+    <div class="product-title">
+        <h1>Skins</h1>
+    </div>
+
+
+    <section class="product-container">
+
+
+        <form method="post">
+            <div class="product-box">
+                <img class="product-pic sor1" src="/imagenes/sorball.png">
+                <h3>Sorball rosa</h3>
+                <ul>
+                    <li><span>Precio real: </span>$50.00 MXN</li>
+                    <li><span>Precio virtual: </span>2000 monedas</li>
+                </ul>
+                <div class="overlay overlay1">
+                    <input class="button" type="submit" value="Comprar" />
+                </div>
+                <input type="hidden" asp-for="ProductId" value="4" />
+            </div>
+        </form>
+
+
+        <form method="post">
+            <div class="product-box">
+                <img class="product-pic sor2" src="/imagenes/sorball.png">
+                <h3>Sorball roja</h3>
+                <ul>
+                    <li><span>Precio real: </span>$50.00 MXN</li>
+                    <li><span>Precio virtual: </span>2000 monedas</li>
+                </ul>
+                <div class="overlay overlay1">
+                    <input class="button" type="submit" value="Comprar" />
+                </div>
+                <input type="hidden" asp-for="ProductId" value="5" />
+            </div>
+        </form>
+
+
+        <form method="post">
+            <div class="product-box">
+                <img class="product-pic sor3" src="/imagenes/sorball.png">
+                <h3>Sorball naranja</h3>
+                <ul>
+                    <li><span>Precio real: </span>$50.00 MXN</li>
+                    <li><span>Precio virtual: </span>2000 monedas</li>
+                </ul>
+                <div class="overlay overlay1">
+                    <input class="button" type="submit" value="Comprar" />
+                </div>
+                <input type="hidden" asp-for="ProductId" value="6" />
+            </div>
+        </form>
+
+
+        <form method="post">
+            <div class="product-box">
+                <img class="product-pic sor4" src="/imagenes/sorball.png">
+                <h3>Sorball verde</h3>
+                <ul>
+                    <li><span>Precio real: </span>$50.00 MXN</li>
+                    <li><span>Precio virtual: </span>2000 monedas</li>
+                </ul>
+                <div class="overlay overlay1">
+                    <input class="button" type="submit" value="Comprar" />
+                </div>
+                <input type="hidden" asp-for="ProductId" value="7" />
+            </div>
+        </form>
+
+
+    </section>
+
+
+</body>
+
+
+
+</html>
+

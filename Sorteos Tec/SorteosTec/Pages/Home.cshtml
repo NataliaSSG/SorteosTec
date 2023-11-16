@@ -3,20 +3,62 @@
 @{
 }
 
-    <div class="titulo-home-page">¡Bienvenido a Sorteos Tec!</div>
+@{
+    Layout = null; // No layout for this page
+}
 
-        <div class="contenedor-texto">
-            <p class="sobre">
-                En Sorteos Tec nos interesa apoyar e incentivar la educación en México.
-                ¡Juega y consigue puntos para ganar descuentos y así apoyar a los jóvenes del país!
-            </p>
+<!-- PAGINA DE INICIO -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SorteosTec.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar">
+            <a asp-page="/Home">Inicio</a>
+            <a asp-page="/Manual">Manual</a>
+            <a asp-page="/Tienda">Tienda</a>
+        </nav>
+
+        <a class="logo" asp-page="/Home">
+            <img class="logo-azul" src="/imagenes/SorteosTecBlanco.png">
+        </a>
+
+    </header>
+
+    <div class="background">
+        <div class="title-space">
+            <h1>¡Bienvenido a Sorteos Tec!</h1>
         </div>
 
-    <div class="contenedor-imagen">
-        <div class="espacio-juego">
-            <img class="imagen-juego" src="/imagenes/Videojuego.png" />
+        <div class="text-space">
+            <p>¡Juega y consigue puntos para ganar descuentos y así apoyar a los jóvenes del país!</p>
         </div>
+
+        <div class="game-space">
+            <img class="game-pic" src="/imagenes/Videojuego.png">
+        </div>
+
+        <div class="text-space">
+            <a asp-page="/Manual">¿No sabes cómo jugar?</a>
+        </div>
+
     </div>
+
+</body>
+
+</html>
 
 
 
