@@ -73,3 +73,4 @@ CREATE table transactions(
 	foreign key (id_client) references client(id_client),
 	foreign key (id_item) references items(id_item)
 );
+

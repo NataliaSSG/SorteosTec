@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddDbContext<dbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("dbContext"), 
-    new MySqlServerVersion(new Version(8, 1, 0)))); 
+    options.UseMySql(builder.Configuration.GetConnectionString("dbContext"),
+    new MySqlServerVersion(new Version(8, 1, 0))));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

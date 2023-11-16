@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TecTrekAPI.Models;
+using TecTrekAPI.Interfaces;
 using TecTrekAPI.Data;
 
-public class ClienteService
+public class ClienteService : IClienteService
 {
     private readonly dbContext _context;
 
