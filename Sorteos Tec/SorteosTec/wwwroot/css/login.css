@@ -4,10 +4,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html {
-    font-size: 14px;
-}
-
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -17,6 +13,7 @@ html {
 html {
     position: relative;
     min-height: 100%;
+    font-size: 14px;
 }
 
 body.Index {
@@ -28,7 +25,7 @@ body.Index {
 body.Registro {
     margin: 0;
     background: linear-gradient(145deg,#7FA7EB, #417FE8);
-    height: 122vh;
+    height: 118vh;
 }
 
 .logo {
