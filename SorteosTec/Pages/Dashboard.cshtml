@@ -1,0 +1,41 @@
+﻿@page
+@model SorteosTec.Pages.DashboardModel
+@{
+}
+
+@{
+    Layout = null; // No layout for this page
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SorteosTec.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a asp-page="/Dashboard">Dashboard</a>
+        </nav>
+
+        <a class="logo" asp-page="/Dashboard">
+            <img class="logo-azul" src="/imagenes/SorteosTecBlanco.png">
+        </a>
+    </header>
+
+    <div class="contenedor">
+        <iframe src="http://localhost:3000/dashboard/snapshot/geOwosmCwS033Fv7Vdx61UJuQwc6LIPO"></iframe>
+    </div>
+
+</body>
+</html>
+
+    

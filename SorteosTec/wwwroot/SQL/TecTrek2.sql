@@ -10,7 +10,7 @@ CREATE table client(
 	birth_date date NOT NULL,
 	user_password varchar(200) NOT NULL,
 	email varchar(60) NOT NULL,
-	sexo tinyint unsigned NOT NULL,
+	sexo tinyint UNSIGNED NOT NULL,
     admin bool default false
 );
 
