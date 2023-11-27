@@ -9,10 +9,10 @@ public class ClienteController : ControllerBase
 {
     private readonly ClienteService _clienteService;
 
-    // public ClienteController(ClienteService clienteService)
-    // {
-    //     _clienteService = clienteService;
-    // }
+    public ClienteController(ClienteService clienteService)
+    {
+        _clienteService = clienteService;
+    }
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -37,6 +37,22 @@ public class ClienteController : ControllerBase
     {
         var createdCliente = await _clienteService.CreateClienteAsync(cliente);
         return CreatedAtAction(nameof(GetById), new { id = createdCliente.id_client}, createdCliente);
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> logIn([FromBody] Dictionary<string, string> credentials)
+    {
+        string username = credentials["username"];
+        string password = credentials["password"];
+
+        var client = await _clienteService.logIn(username, password);
+
+        if (client != null) {
+            return Ok(client);
+        } 
+        else {
+            return NotFound();
+        }
     }
 
     [HttpPut("{id}")]

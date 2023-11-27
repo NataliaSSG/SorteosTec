@@ -13,12 +13,13 @@ namespace TecTrekAPI.Models
 		public int sexo { set; get; }
 		public String email { set; get; }
 		public String username { set; get; }
-		public Boolean admin { set; get; }
+		public string? role { set; get; }
 		public String user_password { set; get; }
+		public int points { set; get; }
 
 		public ClienteModel()
 		{
-
+			points = 0;
 		}
 	}
 }
