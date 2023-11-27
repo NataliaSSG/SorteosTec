@@ -6,7 +6,6 @@ using TecTrekAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddDbContext<dbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("dbContext"),
     new MySqlServerVersion(new Version(8, 1, 0))));
@@ -24,6 +23,7 @@ builder.Services.AddScoped<LogInService>();
 builder.Services.AddScoped<AddOnsService>();
 builder.Services.AddScoped<UserInventoryService>();
 builder.Services.AddScoped<TransactionsService>();
+builder.Services.AddScoped<LeaderboardService>();
 
 var app = builder.Build();
 

@@ -9,10 +9,10 @@ public class ClienteController : ControllerBase
 {
     private readonly ClienteService _clienteService;
 
-    public ClienteController(ClienteService clienteService)
-    {
-        _clienteService = clienteService;
-    }
+    // public ClienteController(ClienteService clienteService)
+    // {
+    //     _clienteService = clienteService;
+    // }
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
