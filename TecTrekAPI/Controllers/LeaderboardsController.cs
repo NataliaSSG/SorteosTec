@@ -8,7 +8,7 @@ namespace TecTrekAPI.Controllers
 {
 	[Route("/api/leaderboard")]
     [ApiController]
-    public class Leaderboard : ControllerBase8
+    public class Leaderboard : ControllerBase
     {
         private readonly LeaderboardService _leaderboardService;
 
