@@ -7,8 +7,8 @@ using TecTrekAPI.Services;
 namespace TecTrekAPI.Controllers
 {
 	[Route("/api/leaderboard")]
-[   ApiController]
-    public class Leaderboard : ControllerBase
+    [ApiController]
+    public class Leaderboard : ControllerBase8
     {
         private readonly LeaderboardService _leaderboardService;
 
@@ -23,6 +23,6 @@ namespace TecTrekAPI.Controllers
         {
             return await _leaderboardService.GetLeaderboardAsync();
         }
-}
+    }
 
 }
