@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SorteosTec.Models;
+using SorteosTec.Pages.Models;
 
 namespace SorteosTec.Pages
 {
@@ -16,43 +17,21 @@ namespace SorteosTec.Pages
         [BindProperty]
         public UserAddressModel UserAddress { get; set; }
 
-        private readonly DatabaseModel db;
+        private readonly ApiClient apiClient;
 
         public RegistroModel(){
             UserRegistry = new UserRegistryModel();
             UserAddress = new UserAddressModel();
 
-            //Base de datos
-            string sqlCredentials = "server=localhost;user=root;password=;database=TecTrek";
-            db = new DatabaseModel(sqlCredentials);
+            // API helper
+            apiClient = new ApiClient(); 
         }
+
         public void OnGet()
         {
         }
 
-        public IActionResult OnPost() {
-            int gender;
-            string genderString = UserRegistry.Gender;
-
-            //Asignar un valor numérico a cada género
-            switch (genderString)
-            {
-                case "Masculino":
-                    gender = 0;
-                    break;
-
-                case "Femenino":
-                    gender = 1;
-                    break;
-
-                case "Otro":
-                    gender = 2;
-                    break;
-
-                default:
-                    throw new Exception("El género seleccionado no es válido");
-            }
-
+        public async Task <IActionResult> OnPost() {
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -60,7 +39,7 @@ namespace SorteosTec.Pages
 
             try
             {
-                db.InsertClient(UserRegistry.FullName, gender, UserRegistry.Email, UserRegistry.Username, UserRegistry.Password, UserRegistry.DateofBirth, UserAddress.Estado, UserAddress.Municipio);
+                await apiClient.CreateClienteAndAddress(UserRegistry.FullName, UserRegistry.Gender, UserRegistry.Username, UserRegistry.Password, UserRegistry.DateofBirth, UserRegistry.Email, UserAddress.Estado, UserAddress.Municipio);
                 Console.WriteLine("Client inserted successfully");
             }
             catch (Exception ex)
