@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http;
+using SorteosTec.Pages.Models;
 
 namespace SorteosTec.Pages;
 
@@ -9,44 +11,45 @@ public class IndexModel : PageModel
     public UserDetailsModel UserDetails {get; set;}
 
     //Objeto de base de datos
-    private readonly DatabaseModel db;
-
+    private readonly ApiClient apiClient;
+    
     public IndexModel( )
     {
         UserDetails = new UserDetailsModel(); //Objeto de la clase UserDetailsModel, para accdeer a sus propiedades
 
         //Base de datos
-        string sqlCredentials = "server=localhost;user=root;password=06022003;database=TecTrek";
-        db = new DatabaseModel(sqlCredentials);
+        apiClient = new ApiClient();
     }
 
     public void OnGet()
     {
-
+    
     }
 
-    public IActionResult OnPost()
+    public async  Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        //Prints de prueba (Inicio de sesion con diccionario)
-        // Console.WriteLine($"Username: {UserDetails.Username}");
-        // Console.WriteLine($"Password: {UserDetails.Password}");
+        var client = await apiClient.LogIn(UserDetails.Username, UserDetails.Password);
 
-        bool containsUsername = UserDetails.testDict.ContainsKey(UserDetails.Username);
+        if (client != null) {
+            HttpContext.Session.SetString("username", client.username);
+            HttpContext.Session.SetString("role", client.role);
 
-        //Los datos de inicio de sesion son correctos y estan en el diccionario??
-        // if (containsUsername && UserDetails.testDict[UserDetails.Username] == UserDetails.Password)
-        if (db.CheckCredentials(UserDetails.Username, UserDetails.Password))
-        {
-            return RedirectToPage("/Home");
-        }
-        else
-        {
-            ModelState.AddModelError(string.Empty, "Usuario o contraseña incorrectos");
+            if (client.role == "Admin") {
+                return RedirectToPage("/Dashboard");
+            } 
+            else if (client.role == "Cliente") {
+                return RedirectToPage("/Home");
+            }
+            else {
+                return Page();
+            }
+        } 
+        else {
             return Page();
         }
     }
