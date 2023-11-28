@@ -2,6 +2,14 @@ DROP DATABASE IF EXISTS TecTrek;
 CREATE DATABASE TecTrek;
 USE TecTrek;
 
+CREATE USER 'TrikiTrekatelas'@'localhost' IDENTIFIED BY 'AtentamenteElMencho!';
+GRANT ALL PRIVILEGES ON *.* TO 'TrikiTrekatelas'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- HACER EL DUMP ANTES DE CORRER ESTE SCRIPT 
+-- 			vvvvvvvvvvvvvvv
+--  >>>>>>>>mysqldump -u master -h localhost --port=3306 --protocol=TCP TecTrek -p > <Agrega/Tu/Path>/dbdump.sql <<<<<<<<<<
+-- 			^^^^^^^^^^^^^^^
 CREATE table client(
 	id_client INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username varchar(40) NOT NULL,
@@ -12,7 +20,7 @@ CREATE table client(
 	email varchar(60) NOT NULL,
 	sexo tinyint UNSIGNED NOT NULL,
 	points bigint NOT NULL default 0,
-    role varchar(60)
+    admin bool default false
 );
 
 CREATE table items(
@@ -75,3 +83,23 @@ CREATE table transactions(
 	foreign key (id_item) references items(id_item)
 );
 
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (1, 'Lootbox 1', 500, 100.00, 'Skins');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (2, 'Lootbox 2', 1000, 200.00, 'Monedas y Boletos');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (3, 'Lootbox 3', 1500, 300.00, 'Mas monedas');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (4, 'Sorball 1', 2000, 50.00, 'Sorball mi Sueño');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (5, 'Sorball 2', 2000, 50.00, 'Sorball Habitat');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (6, 'Sorball 3', 2000, 50.00, 'Sorball Educativo');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (7, 'Sorball 4', 2000, 50.00, 'Sorall Aventurat');

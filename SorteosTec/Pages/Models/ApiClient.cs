@@ -74,7 +74,33 @@ namespace SorteosTec.Pages.Models
             return JsonConvert.DeserializeObject<ClienteModel>(await credentialsResponse.Content.ReadAsStringAsync());
         }
         
+        public async Task BuyProduct(int idClient, int idProduct) {
+            var product = await _httpClient.GetAsync("https://localhost:7256/Product/" + idProduct);
+            product.EnsureSuccessStatusCode();
 
+            var productJson = await product.Content.ReadAsStringAsync();
+            var productModel = JsonConvert.DeserializeObject<ItemsModel>(productJson);
+
+            var client = await _httpClient.GetAsync("https://localhost:7256/Cliente/" + idClient);
+            client.EnsureSuccessStatusCode();
+            var clientJson = await client.Content.ReadAsStringAsync();
+            var clientModel = JsonConvert.DeserializeObject<ClienteModel>(clientJson);
+
+            if (clientModel.points >= productModel.item_virtual_price) {
+                clientModel.points -= productModel.item_virtual_price;
+                var clientUpdateJson = JsonConvert.SerializeObject(clientModel);
+                var clientUpdateResponse = await _httpClient.PutAsync("https://localhost:7256/Cliente/" + idClient, new StringContent(clientUpdateJson, Encoding.UTF8, "application/json"));
+                clientUpdateResponse.EnsureSuccessStatusCode();
+
+                var productUpdateJson = JsonConvert.SerializeObject(productModel);
+                var productUpdateResponse = await _httpClient.PutAsync("https://localhost:7256/Product/" + idProduct, new StringContent(productUpdateJson, Encoding.UTF8, "application/json"));
+                productUpdateResponse.EnsureSuccessStatusCode();
+            }
+            else {
+                throw new Exception("No tienes suficientes puntos para comprar este producto");
+            }
+        }
+        // Helpers
 		private void splitName(string fullName, out string name, out string lastName) {
             string[] split = fullName.Split(' ');
             name = split[0];
