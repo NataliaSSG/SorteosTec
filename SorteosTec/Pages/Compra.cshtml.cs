@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
@@ -12,14 +13,15 @@ namespace SorteosTec.Pages
 	public class CompraModel : PageModel
     {
         string username, role; 
-        int id, productId;
+        int clientid;
+        public int productId { get; set; }
         ApiClient apiClient = new ApiClient();
         public void OnGet()
         {
             username = HttpContext.Session.GetString("username");
             role = HttpContext.Session.GetString("role");
-            int id = (int)HttpContext.Session.GetInt32("id");
-            int productId = int.Parse(Request.Query["ProductId"]);
+            clientid = (int)HttpContext.Session.GetInt32("id");
+            productId = int.Parse(Request.Query["ProductId"]);
 
             if (username == null || role == null) {
                 Response.Redirect("/Index");
@@ -28,15 +30,15 @@ namespace SorteosTec.Pages
 
         public void OnPost()
         {
-            string username = HttpContext.Session.GetString("username");
-            string role = HttpContext.Session.GetString("role");
-            int id = (int)HttpContext.Session.GetInt32("id");
-
+            username = HttpContext.Session.GetString("username");
+            role = HttpContext.Session.GetString("role");
+            clientid = (int)HttpContext.Session.GetInt32("id");
+            productId = int.Parse(Request.Query["ProductId"]);
             if (username == null || role == null) {
                 Response.Redirect("/Index");
             }
             
-            apiClient.BuyProduct(id, productId);
+            apiClient.BuyProduct(clientid, productId);
             Response.Redirect("/Tienda");
         }
 
