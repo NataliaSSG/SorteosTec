@@ -81,15 +81,16 @@ namespace SorteosTec.Pages.Models
             // Obtener el producto
             var product = await _httpClient.GetAsync("https://localhost:7256/Items/" + idProduct);
             product.EnsureSuccessStatusCode();
-
             var productJson = await product.Content.ReadAsStringAsync();
             var productModel = JsonConvert.DeserializeObject<ItemsModel>(productJson);
+            Console.WriteLine(productModel.item_virtual_price);
 
             // Obtener el cliente
             var client = await _httpClient.GetAsync("https://localhost:7256/Cliente/" + idClient);
             client.EnsureSuccessStatusCode();
             var clientJson = await client.Content.ReadAsStringAsync();
             var clientModel = JsonConvert.DeserializeObject<ClienteModel>(clientJson);
+            Console.WriteLine(clientModel.points);
 
             Console.WriteLine(clientModel.first_name);
 
@@ -113,6 +114,7 @@ namespace SorteosTec.Pages.Models
                 throw new Exception("No tienes suficientes puntos para comprar este producto");
             }
         }
+        
         // Helpers
 		private void splitName(string fullName, out string name, out string lastName) {
             string[] split = fullName.Split(' ');
