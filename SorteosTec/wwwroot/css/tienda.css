@@ -112,15 +112,15 @@
 }
 
 .sor1 {
-    filter: hue-rotate(280deg);
+    filter: hue-rotate(210deg); 
 }
 
 .sor2 {
-    filter: hue-rotate(315deg);
+    filter: hue-rotate(30deg);
 }
 
 .sor4 {
-    filter: hue-rotate(30deg);
+    filter: hue-rotate(315deg);
 }
 
 .button {
