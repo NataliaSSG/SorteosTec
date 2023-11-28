@@ -2,6 +2,14 @@ DROP DATABASE IF EXISTS TecTrek;
 CREATE DATABASE TecTrek;
 USE TecTrek;
 
+CREATE USER 'TrikiTrekatelas'@'localhost' IDENTIFIED BY 'AtentamenteElMencho!';
+GRANT ALL PRIVILEGES ON *.* TO 'TrikiTrekatelas'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- HACER EL DUMP ANTES DE CORRER ESTE SCRIPT 
+-- 			vvvvvvvvvvvvvvv
+--  >>>>>>>>mysqldump -u master -h localhost --port=3306 --protocol=TCP TecTrek -p > <Agrega/Tu/Path>/dbdump.sql <<<<<<<<<<
+-- 			^^^^^^^^^^^^^^^
 CREATE table client(
 	id_client INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username varchar(40) NOT NULL,
@@ -12,11 +20,11 @@ CREATE table client(
 	email varchar(60) NOT NULL,
 	sexo tinyint UNSIGNED NOT NULL,
 	points bigint NOT NULL default 0,
-    role varchar(60)
+    admin bool default false
 );
 
 CREATE table items(
-	id_item int NOT NULL primary key,
+	id_item int NOT NULL auto_increment primary key,
 	item_name varchar(50) NOT NULL,
 	item_virtual_price int NOT NULL,
 	item_real_price float NOT NULL,
