@@ -58,19 +58,21 @@
             <form method="post">
 
                 <div class="input-space">
+
                     <div class="input">
-                        <input type="radio" id="option1" name="options" value="option1">
+                        <input type="radio" id="option1" name="options" value="0">
                         <label for="option1">Dinero real</label>
                     </div>
 
                     <div class="input">
-                        <input type="radio" id="option2" name="options" value="option2">
+                        <input type="radio" id="option2" name="options" value="1">
                         <label for="option2">Monedas del juego</label>
                     </div>
+
                 </div>
 
-                <input class="button" type="submit" value="Comprar" />
-
+                <input class="button" type="submit" value="Comprar" asp-for="PaymentType" />
+                
             </form>
 
         </div>

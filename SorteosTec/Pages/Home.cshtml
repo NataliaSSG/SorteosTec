@@ -29,10 +29,13 @@
             <a asp-page="/Home">Inicio</a>
             <a asp-page="/Manual">Manual</a>
             <a asp-page="/Tienda">Tienda</a>
-            <form method="post">
-                <a asp-page="/Index">LogOut</a>
-            </form>
         </nav>
+
+        <form method="post">
+            <a class="logout" asp-page="/Index">
+                <img class="logoutimage" src="/imagenes/logout.png">
+            </a>
+        </form>
 
         <a class="logo" asp-page="/Home">
             <img class="logo-azul" src="/imagenes/SorteosTecBlanco.png">

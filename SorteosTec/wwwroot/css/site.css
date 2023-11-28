@@ -35,6 +35,16 @@ header {
             font-weight: 500;
         }
 
+.logout {
+    margin-left: auto;
+    padding-right: 15px;
+}
+
+    .logout .logoutimage {
+        height: 20px;
+        margin-left: auto;
+        padding-left: 30px;
+    }
 
 .logo {
     margin-left: auto;
@@ -45,6 +55,7 @@ header {
         height: 100px;
         filter: invert(100%);
     }
+
 
 .title-space {
     padding: 15px;
