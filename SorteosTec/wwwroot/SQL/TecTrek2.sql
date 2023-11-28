@@ -2,14 +2,14 @@ DROP DATABASE IF EXISTS TecTrek;
 CREATE DATABASE TecTrek;
 USE TecTrek;
 
-CREATE USER 'TrikiTrekatelas'@'localhost' IDENTIFIED BY 'AtentamenteElMencho!';
-GRANT ALL PRIVILEGES ON *.* TO 'TrikiTrekatelas'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+-- CREATE USER 'TrikiTrekatelas'@'localhost' IDENTIFIED BY 'AtentamenteElMencho!';
+-- GRANT ALL PRIVILEGES ON *.* TO 'TrikiTrekatelas'@'localhost' WITH GRANT OPTION;
+-- FLUSH PRIVILEGES;
 
 -- HACER EL DUMP ANTES DE CORRER ESTE SCRIPT 
 -- 			vvvvvvvvvvvvvvv
 --  >>>>>>>>mysqldump -u master -h localhost --port=3306 --protocol=TCP TecTrek -p > <Agrega/Tu/Path>/dbdump.sql <<<<<<<<<<
--- 			^^^^^^^^^^^^^^^
+-- 			^^^^^^^^^^^^^^^ 
 CREATE table client(
 	id_client INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username varchar(40) NOT NULL,
@@ -19,8 +19,8 @@ CREATE table client(
 	user_password varchar(200) NOT NULL,
 	email varchar(60) NOT NULL,
 	sexo tinyint UNSIGNED NOT NULL,
-	points bigint NOT NULL default 0,
-    admin bool default false
+	points bigint default 0,
+    role varchar(60)
 );
 
 CREATE table items(
@@ -66,7 +66,6 @@ CREATE table user_inventory(
 	id_inventory int NOT NULL auto_increment primary key,
 	id_client INT NOT NULL,
 	id_item int NOT NULL,
-	quantity int,
 	foreign key (id_client) references client(id_client),
 	foreign key (id_item) references items(id_item)
 );
@@ -76,9 +75,8 @@ CREATE table transactions(
 	id_transaction int NOT NULL auto_increment primary key,
 	id_client INT NOT NULL,
 	id_item int NOT NULL,
-	quantity int NOT NULL,
 	payment_type bool NOT NULL,
-	transaction_date timestamp NOT NULL,
+	transaction_date timestamp NOT NULL DEFAULT current_timestamp,
 	foreign key (id_client) references client(id_client),
 	foreign key (id_item) references items(id_item)
 );

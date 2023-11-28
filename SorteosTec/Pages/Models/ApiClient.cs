@@ -75,16 +75,23 @@ namespace SorteosTec.Pages.Models
         }
         
         public async Task BuyProduct(int idClient, int idProduct) {
-            var product = await _httpClient.GetAsync("https://localhost:7256/Product/" + idProduct);
+            Console.WriteLine("Comprando producto");
+            Console.WriteLine(idClient);
+            Console.WriteLine(idProduct);
+            // Obtener el producto
+            var product = await _httpClient.GetAsync("https://localhost:7256/Items/" + idProduct);
             product.EnsureSuccessStatusCode();
 
             var productJson = await product.Content.ReadAsStringAsync();
             var productModel = JsonConvert.DeserializeObject<ItemsModel>(productJson);
 
+            // Obtener el cliente
             var client = await _httpClient.GetAsync("https://localhost:7256/Cliente/" + idClient);
             client.EnsureSuccessStatusCode();
             var clientJson = await client.Content.ReadAsStringAsync();
             var clientModel = JsonConvert.DeserializeObject<ClienteModel>(clientJson);
+
+            Console.WriteLine(clientModel.first_name);
 
             if (clientModel.points >= productModel.item_virtual_price) {
                 clientModel.points -= productModel.item_virtual_price;
@@ -92,8 +99,14 @@ namespace SorteosTec.Pages.Models
                 var clientUpdateResponse = await _httpClient.PutAsync("https://localhost:7256/Cliente/" + idClient, new StringContent(clientUpdateJson, Encoding.UTF8, "application/json"));
                 clientUpdateResponse.EnsureSuccessStatusCode();
 
-                var productUpdateJson = JsonConvert.SerializeObject(productModel);
-                var productUpdateResponse = await _httpClient.PutAsync("https://localhost:7256/Product/" + idProduct, new StringContent(productUpdateJson, Encoding.UTF8, "application/json"));
+                Console.WriteLine(clientModel.points);
+                
+                var invItem = new UserInventoryModel {id_client = idClient, 
+                                                      id_item = idProduct};
+                
+                var addItem = JsonConvert.SerializeObject(invItem);
+
+                var productUpdateResponse = await _httpClient.PostAsync("https://localhost:7256/UserInventory/", new StringContent(addItem, Encoding.UTF8, "application/json"));
                 productUpdateResponse.EnsureSuccessStatusCode();
             }
             else {
