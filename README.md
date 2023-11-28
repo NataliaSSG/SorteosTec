@@ -4,8 +4,7 @@
 - Sebastian Rosas Maciel
 - Natalia Sofia Salgado Garcia
 - Sylvia Aurora Cortés Rojas 
-- Isaac
-
+- Yudith Korina Hernandez Palacios
 ---
 
 ## Contenido 
