@@ -15,7 +15,7 @@ namespace TecTrekAPI.Models
 		public ItemsModel item { get; set; }
 		public int quantity { get; set; }
 		public bool payment_type { get; set; }
-		public DateTime transaction_date { get; set; }
+		public DateTime? transaction_date { get; set; }
 	}
 }
 

@@ -15,7 +15,7 @@ namespace TecTrekAPI.Models
 		public String username { set; get; }
 		public string? role { set; get; }
 		public String user_password { set; get; }
-		public int points { set; get; }
+		public int? points { set; get; }
 
 		public ClienteModel()
 		{
