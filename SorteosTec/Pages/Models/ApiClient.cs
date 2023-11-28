@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Newtonsoft.Json;
 using TecTrekAPI.Controllers;
 using TecTrekAPI.Models;
@@ -75,9 +76,6 @@ namespace SorteosTec.Pages.Models
         }
         
         public async Task BuyProduct(int idClient, int idProduct) {
-            Console.WriteLine("Comprando producto");
-            Console.WriteLine(idClient);
-            Console.WriteLine(idProduct);
             // Obtener el producto
             var product = await _httpClient.GetAsync("https://localhost:7256/Items/" + idProduct);
             product.EnsureSuccessStatusCode();
@@ -90,9 +88,6 @@ namespace SorteosTec.Pages.Models
             client.EnsureSuccessStatusCode();
             var clientJson = await client.Content.ReadAsStringAsync();
             var clientModel = JsonConvert.DeserializeObject<ClienteModel>(clientJson);
-            Console.WriteLine(clientModel.points);
-
-            Console.WriteLine(clientModel.first_name);
 
             if (clientModel.points >= productModel.item_virtual_price) {
                 clientModel.points -= productModel.item_virtual_price;
@@ -100,7 +95,6 @@ namespace SorteosTec.Pages.Models
                 var clientUpdateResponse = await _httpClient.PutAsync("https://localhost:7256/Cliente/" + idClient, new StringContent(clientUpdateJson, Encoding.UTF8, "application/json"));
                 clientUpdateResponse.EnsureSuccessStatusCode();
 
-                Console.WriteLine(clientModel.points);
                 
                 var invItem = new UserInventoryModel {id_client = idClient, 
                                                       id_item = idProduct};
@@ -114,7 +108,16 @@ namespace SorteosTec.Pages.Models
                 throw new Exception("No tienes suficientes puntos para comprar este producto");
             }
         }
-        
+
+        public async Task<ItemsModel> GetItem(int id_item)
+        {
+            var item = await _httpClient.GetAsync("https://localhost:7256/Items/" + id_item);
+            item.EnsureSuccessStatusCode();
+            var itemJson = await item.Content.ReadAsStringAsync();
+            var itemModel = JsonConvert.DeserializeObject<ItemsModel>(itemJson);
+
+            return itemModel;
+        }
         // Helpers
 		private void splitName(string fullName, out string name, out string lastName) {
             string[] split = fullName.Split(' ');

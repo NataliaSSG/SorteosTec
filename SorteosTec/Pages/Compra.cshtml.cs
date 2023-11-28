@@ -7,6 +7,7 @@ using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SorteosTec.Pages.Models;
+using TecTrekAPI.Models;
 
 namespace SorteosTec.Pages
 {
@@ -16,8 +17,12 @@ namespace SorteosTec.Pages
         int clientid;
         public int productId { get; set; }
         ApiClient apiClient = new ApiClient();
-        public void OnGet()
+
+        public async Task OnGet()
         {
+            productId = int.Parse(Request.Query["ProductId"]);
+            Console.WriteLine(productId);
+            ItemsModel item = await apiClient.GetItem(productId);
             username = HttpContext.Session.GetString("username");
             role = HttpContext.Session.GetString("role");
             clientid = (int)HttpContext.Session.GetInt32("id");
@@ -26,6 +31,10 @@ namespace SorteosTec.Pages
             if (username == null || role == null) {
                 Response.Redirect("/Index");
             }
+
+            ViewData["Description"] = item.description;
+            ViewData["RealPrice"] = item.item_real_price;
+            ViewData["VirtualPrice"] = item.item_virtual_price;
         }
 
         public void OnPost()
