@@ -8,7 +8,8 @@ namespace TecTrekAPI.Models
 		public int id_item { get; set; }
 		public string item_name { get; set; }
 		public int item_virtual_price { get; set; }
-		public int item_real_price { get; set; }
+		public float item_real_price { get; set; }
+		public string? description { get; set; }
 	
 	}
 }
