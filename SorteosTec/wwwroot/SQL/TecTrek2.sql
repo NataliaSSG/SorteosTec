@@ -114,3 +114,6 @@ VALUES
 ('Shaqx', 'Isaac', 'Enriquez', '1999-01-20', '123456','shax@hotmail.com',0, 1530, 0),
 ('AOkay', 'Narharis', 'Narharinio', '2001-01-01', 'nananabatman', 'aokei@gmail.com',0, 90, 0);
 
+
+create view leaderboard as
+select username, points from client order by points desc;
