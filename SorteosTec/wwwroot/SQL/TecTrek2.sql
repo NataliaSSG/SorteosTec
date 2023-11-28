@@ -2,9 +2,15 @@ DROP DATABASE IF EXISTS TecTrek;
 CREATE DATABASE TecTrek;
 USE TecTrek;
 
+-- DESCOMENTAR SI EL USUARIO NO HA SIDO CREADO --
+
+
+/* CREATE USER
 CREATE USER 'TrikiTrekatelas'@'localhost' IDENTIFIED BY 'AtentamenteElMencho!';
 GRANT ALL PRIVILEGES ON *.* TO 'TrikiTrekatelas'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
+*/
+
 
 -- HACER EL DUMP ANTES DE CORRER ESTE SCRIPT 
 -- 			vvvvvvvvvvvvvvv
@@ -84,22 +90,27 @@ CREATE table transactions(
 );
 
 INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
-VALUES (1, 'Lootbox 1', 500, 100.00, 'Skins');
+VALUES 
+(1, 'Lootbox 1', 500, 100.00, 'Skins'),
+(2, 'Lootbox 2', 1000, 200.00, 'Monedas y Boletos'),
+(3, 'Lootbox 3', 1500, 300.00, 'Mas monedas'),
+(4, 'Sorball 1', 2000, 50.00, 'Sorball mi Sueño'),
+(5, 'Sorball 2', 2000, 50.00, 'Sorball Habitat'),
+(6, 'Sorball 3', 2000, 50.00, 'Sorball Educativo'),
+(7, 'Sorball 4', 2000, 50.00, 'Sorall Aventurat'),
+(8, 'Discount 1', 0, 0, '0.1'),
+(9, 'Discount 2', 0, 0, '0.15')
+(10,'Discount 3', 0, 0, '0.2'),
+(11,'Discount 4', 0, 0, '0.25');
 
-INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
-VALUES (2, 'Lootbox 2', 1000, 200.00, 'Monedas y Boletos');
 
-INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
-VALUES (3, 'Lootbox 3', 1500, 300.00, 'Mas monedas');
 
-INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
-VALUES (4, 'Sorball 1', 2000, 50.00, 'Sorball mi Sueño');
+INSERT INTO client (username, first_name, last_name, birth_date, user_password, email, sexo, points, admin)
+VALUES
+('Nataliaaa', 'Natalia', 'Salgado', '2002-05-22', '696969', 'natsg@gmail.com',1, 500, 1),
+('SylviaPoyito', 'Sylvia', 'Cortes', '2000-07-07', '070707', 'sylviac@hotmail.com',2, 750, 1),
+('Sebs', 'Sebastian', 'Rosas', '2003-02-06', '420420', 'sebs@gmail.com',0, 501, 1),
+('Yu', 'Yudith', 'Palacios', '2003-08-07', '50069', 'yuyu@hotmail.com',1, 600, 1),
+('Shaqx', 'Isaac', 'Enriquez', '1999-01-20', '123456','shax@hotmail.com',0, 1530, 0),
+('AOkay', 'Narharis', 'Narharinio', '2001-01-01', 'nananabatman', 'aokei@gmail.com',0, 90, 0);
 
-INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
-VALUES (5, 'Sorball 2', 2000, 50.00, 'Sorball Habitat');
-
-INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
-VALUES (6, 'Sorball 3', 2000, 50.00, 'Sorball Educativo');
-
-INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
-VALUES (7, 'Sorball 4', 2000, 50.00, 'Sorall Aventurat');
