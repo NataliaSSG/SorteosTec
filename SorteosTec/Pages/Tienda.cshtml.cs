@@ -16,10 +16,23 @@ namespace SorteosTec.Pages
         public void OnGet()
         {
             ProductId = 0;
+            string username = HttpContext.Session.GetString("username");
+            string role = HttpContext.Session.GetString("role");
+
+            if (username == null || role == null) {
+                Response.Redirect("/Index");
+            }
         }
 
         public void OnPost()
         {
+            string username = HttpContext.Session.GetString("username");
+            string role = HttpContext.Session.GetString("role");
+
+            if (username == null || role == null) {
+                Response.Redirect("/Index");
+            }
+            
             Response.Redirect($"Compra?ProductId={ProductId}");
         }
     }

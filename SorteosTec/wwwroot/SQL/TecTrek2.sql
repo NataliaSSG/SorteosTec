@@ -12,7 +12,7 @@ CREATE table client(
 	email varchar(60) NOT NULL,
 	sexo tinyint UNSIGNED NOT NULL,
 	points bigint NOT NULL default 0,
-    admin bool default false
+    role varchar(60)
 );
 
 CREATE table items(
