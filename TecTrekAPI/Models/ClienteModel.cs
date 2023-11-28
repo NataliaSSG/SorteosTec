@@ -19,7 +19,7 @@ namespace TecTrekAPI.Models
 
 		public ClienteModel()
 		{
-			points = 0;
+
 		}
 	}
 }

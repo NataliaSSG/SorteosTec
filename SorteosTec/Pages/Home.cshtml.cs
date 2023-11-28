@@ -18,5 +18,11 @@ namespace SorteosTec.Pages
                 Response.Redirect("/Index");
             }
         }
+
+        public void OnPostAsync()
+        {
+            
+        }
+
     }
 }

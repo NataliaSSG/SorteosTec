@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 using SorteosTec.Pages.Models;
+using System.Net;
 
 namespace SorteosTec.Pages;
 
@@ -26,30 +27,43 @@ public class IndexModel : PageModel
     
     }
 
-    public async  Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        var client = await apiClient.LogIn(UserDetails.Username, UserDetails.Password);
+        try
+        {
+            var client = await apiClient.LogIn(UserDetails.Username, UserDetails.Password);
 
-        if (client != null) {
-            HttpContext.Session.SetString("username", client.username);
-            HttpContext.Session.SetString("role", client.role);
+            if (client != null) {
+                HttpContext.Session.SetString("username", client.username);
+                HttpContext.Session.SetString("role", client.role);
 
-            if (client.role == "Admin") {
-                return RedirectToPage("/Dashboard");
+                if (client.role == "Admin") {
+                    return RedirectToPage("/Dashboard");
+                } 
+                else if (client.role == "Cliente") {
+                    return RedirectToPage("/Home");
+                }
+                else {
+                    return Page();
+                }
             } 
-            else if (client.role == "Cliente") {
-                return RedirectToPage("/Home");
-            }
             else {
                 return Page();
             }
-        } 
-        else {
+        }
+        catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
+        {
+            ModelState.AddModelError(string.Empty, "Usuario y/o contraseña incorrectos");
+            return Page();
+        }
+        catch (System.Exception)
+        {
+            ModelState.AddModelError(string.Empty, "Usuario y/o contraseña incorrectos");
             return Page();
         }
     }
