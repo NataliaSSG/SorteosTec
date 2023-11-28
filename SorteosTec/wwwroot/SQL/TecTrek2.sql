@@ -16,7 +16,7 @@ CREATE table client(
 );
 
 CREATE table items(
-	id_item int NOT NULL auto_increment primary key,
+	id_item int NOT NULL primary key,
 	item_name varchar(50) NOT NULL,
 	item_virtual_price int NOT NULL,
 	item_real_price float NOT NULL,
@@ -75,3 +75,23 @@ CREATE table transactions(
 	foreign key (id_item) references items(id_item)
 );
 
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (1, 'Lootbox 1', 500, 100.00, 'Skins');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (2, 'Lootbox 2', 1000, 200.00, 'Monedas y Boletos');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (3, 'Lootbox 3', 1500, 300.00, 'Mas monedas');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (4, 'Sorball 1', 2000, 50.00, 'Sorball mi Sueño');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (5, 'Sorball 2', 2000, 50.00, 'Sorball Habitat');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (6, 'Sorball 3', 2000, 50.00, 'Sorball Educativo');
+
+INSERT INTO items (id_item, item_name, item_virtual_price, item_real_price, description)
+VALUES (7, 'Sorball 4', 2000, 50.00, 'Sorall Aventurat');

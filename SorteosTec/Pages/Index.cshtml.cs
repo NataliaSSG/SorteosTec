@@ -41,6 +41,7 @@ public class IndexModel : PageModel
             if (client != null) {
                 HttpContext.Session.SetString("username", client.username);
                 HttpContext.Session.SetString("role", client.role);
+                HttpContext.Session.SetInt32("id", client.id_client);
 
                 if (client.role == "Admin") {
                     return RedirectToPage("/Dashboard");
