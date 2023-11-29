@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using TecTrekAPI.Controllers;
 using TecTrekAPI.Models;
 using TecTrekAPI.Services;
-
+using OpenLootBox;
 
 namespace SorteosTec.Pages.Models
 {
@@ -77,11 +77,28 @@ namespace SorteosTec.Pages.Models
         
         public async Task BuyProduct(int idClient, int idProduct) {
             // Obtener el producto
+            string idProductLootBoxes = "";
+            if (idProduct <= 3)
+            {
+                switch (idProduct)
+                {
+                    case 1:
+                        idProductLootBoxes = Lootboxes.WeightedRandomChoice(Lootboxes.Skins);
+                        break;
+                    case 2:
+                        idProductLootBoxes = Lootboxes.WeightedRandomChoice(Lootboxes.Coins);
+                        break;
+                    case 3:
+                        idProductLootBoxes = Lootboxes.WeightedRandomChoice(Lootboxes.Discounts);
+                        break;
+                }
+                idProduct = int.Parse(idProductLootBoxes);
+            }
+
             var product = await _httpClient.GetAsync("https://localhost:7256/Items/" + idProduct);
             product.EnsureSuccessStatusCode();
             var productJson = await product.Content.ReadAsStringAsync();
             var productModel = JsonConvert.DeserializeObject<ItemsModel>(productJson);
-            Console.WriteLine(productModel.item_virtual_price);
 
             // Obtener el cliente
             var client = await _httpClient.GetAsync("https://localhost:7256/Cliente/" + idClient);
@@ -98,10 +115,9 @@ namespace SorteosTec.Pages.Models
                 
                 var invItem = new UserInventoryModel {id_client = idClient, 
                                                       id_item = idProduct};
-                
                 var addItem = JsonConvert.SerializeObject(invItem);
-
-                var productUpdateResponse = await _httpClient.PostAsync("https://localhost:7256/UserInventory/", new StringContent(addItem, Encoding.UTF8, "application/json"));
+                Console.WriteLine(addItem);
+                var productUpdateResponse = await _httpClient.PostAsync("https://localhost:7256/UserInventory/", new StringContent(addItem, Encoding.UTF8, "application/json"));                
                 productUpdateResponse.EnsureSuccessStatusCode();
             }
             else {
