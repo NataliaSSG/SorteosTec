@@ -5,17 +5,14 @@ using System.Drawing;
 using TecTrekAPI.Models;
 namespace TecTrekAPI.Controllers
 {
+	[Table("log_user")]
 	public class LogInModel
 	{
 		[Key]
 		public int id_log { get; set; }
 		public int id_client { get; set; }
-
-		[ForeignKey("id_client")]
-		public ClienteModel client { get; set; }
-
 		public DateTime log_in { get; set; }
-		public DateTime log_out { get; set; }
+		public DateTime? log_out { get; set; }
 		public int points { get; set; }
 	}
 }

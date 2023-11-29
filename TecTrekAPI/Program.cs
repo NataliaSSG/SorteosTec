@@ -15,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Session Management
+
+
 //Inyecciones de las capas de servicios
 builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<AddressService>();
@@ -24,6 +27,9 @@ builder.Services.AddScoped<AddOnsService>();
 builder.Services.AddScoped<UserInventoryService>();
 builder.Services.AddScoped<TransactionsService>();
 builder.Services.AddScoped<LeaderboardService>();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<SessionDataService>();
 
 var app = builder.Build();
 
@@ -37,6 +43,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
 
 app.MapControllers();
 
