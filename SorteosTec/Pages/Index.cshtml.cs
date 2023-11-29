@@ -43,6 +43,8 @@ public class IndexModel : PageModel
                 HttpContext.Session.SetString("role", client.role);
                 HttpContext.Session.SetInt32("id", client.id_client);
 
+                await apiClient.SetSessionData(client.username, client.role, client.id_client);
+
                 if (client.role == "Admin") {
                     return RedirectToPage("/Dashboard");
                 } 

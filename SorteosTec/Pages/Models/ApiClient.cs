@@ -118,6 +118,22 @@ namespace SorteosTec.Pages.Models
 
             return itemModel;
         }
+
+        //Session Data 
+        public async Task SetSessionData(string username, string role, int id_client)
+        {
+            var sessionData = new SessionDataModel
+            {
+                Username = username,
+                Role = role,
+                UserId = id_client
+            };
+            
+            var sessionDataJson = JsonConvert.SerializeObject(sessionData);
+            var sessionDataResponse = await _httpClient.PostAsync("https://localhost:7256/SessionData", new StringContent(sessionDataJson, Encoding.UTF8, "application/json"));
+            sessionDataResponse.EnsureSuccessStatusCode();
+        }
+
         // Helpers
 		private void splitName(string fullName, out string name, out string lastName) {
             string[] split = fullName.Split(' ');
