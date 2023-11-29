@@ -107,6 +107,7 @@ VALUES
 
 INSERT INTO Client (username, first_name, last_name, birth_date, user_password, email, sexo, points, role)
 VALUES
+('rosassebastian', 'Sebastian', 'Rosas', '2002-05-22', '06022003', 'rosassebastian2003@gmail.com',0, 800, 'Cliente'),
 ('Nataliaaa', 'Natalia', 'Salgado', '2002-05-22', '696969', 'natsg@gmail.com',1, 500, 'Admin'),
 ('SylviaPoyito', 'Sylvia', 'Cortes', '2000-07-07', '070707', 'sylviac@hotmail.com',2, 750, 'Admin'),
 ('Sebs', 'Sebastian', 'Rosas', '2003-02-06', '420420', 'sebs@gmail.com',0, 501, 'Admin'),
