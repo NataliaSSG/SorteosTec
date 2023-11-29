@@ -66,6 +66,22 @@ public class ClienteController : ControllerBase
         return NoContent();
     }
 
+    [HttpPut("{id}/points")]
+    public async Task<IActionResult> UpdateClientePoints(int id, [FromBody] Dictionary<string, int> points)
+    {
+        int usrPoints = points["points"];
+        try
+        {
+            await _clienteService.UpdateClientePointsAsync(id, usrPoints);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    // Delete
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

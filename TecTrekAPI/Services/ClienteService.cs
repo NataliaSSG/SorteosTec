@@ -25,6 +25,29 @@ public class ClienteService : IClienteService
         return await _context.client.FindAsync(id);
     }
 
+    // update points
+    public async Task UpdateClientePointsAsync(int id, int points)
+    {
+        // Fetch the client from the database
+        var cliente = await _context.client.FindAsync(id);
+
+        if (cliente != null)
+        {
+            // Update the points
+            cliente.points += points;
+
+            // Mark the client as modified
+            _context.Entry(cliente).State = EntityState.Modified;
+
+            // Save changes
+            await _context.SaveChangesAsync();
+        }
+        else
+        {
+            throw new Exception("Client not found");
+        }
+    }
+
     // Post
     public async Task<ClienteModel> CreateClienteAsync(ClienteModel cliente)
     {
