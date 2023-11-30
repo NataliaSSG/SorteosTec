@@ -22,15 +22,18 @@ namespace SorteosTec.Pages
         {
             productId = int.Parse(Request.Query["ProductId"]);
             Console.WriteLine(productId);
+
             ItemsModel item = await apiClient.GetItem(productId);
+            Console.WriteLine(item.description);
+            
             username = HttpContext.Session.GetString("username");
             role = HttpContext.Session.GetString("role");
-            clientid = (int)HttpContext.Session.GetInt32("id");
-            productId = int.Parse(Request.Query["ProductId"]);
 
             if (username == null || role == null) {
                 Response.Redirect("/Index");
             }
+
+            clientid = (int)HttpContext.Session.GetInt32("id");
 
             ViewData["Description"] = item.description;
             ViewData["RealPrice"] = item.item_real_price;
@@ -43,6 +46,7 @@ namespace SorteosTec.Pages
             role = HttpContext.Session.GetString("role");
             clientid = (int)HttpContext.Session.GetInt32("id");
             productId = int.Parse(Request.Query["ProductId"]);
+
             if (username == null || role == null) {
                 Response.Redirect("/Index");
             }
