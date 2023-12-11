@@ -51,6 +51,8 @@ public class ClienteService : IClienteService
     // Post
     public async Task<ClienteModel> CreateClienteAsync(ClienteModel cliente)
     {
+        cliente.points = 0;
+        
         if (Regex.IsMatch(cliente.email, @"^L0\d{7}@tec\.mx$")) {
             cliente.role = "Admin";
         }

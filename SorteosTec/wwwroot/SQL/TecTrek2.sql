@@ -25,7 +25,7 @@ CREATE table Client(
 	user_password varchar(200) NOT NULL,
 	email varchar(60) NOT NULL,
 	sexo tinyint UNSIGNED NOT NULL,
-	points bigint default 0,
+	points bigint NOT NULL default 0,
     role varchar(60) 
 );
 

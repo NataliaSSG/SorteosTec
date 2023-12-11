@@ -23,9 +23,10 @@ namespace TecTrekAPI.Tests
 													birth_date = new System.DateTime(2021, 1, 1), 
 													sexo = 1, 
 													email = "test@mail.com", 
-													admin = false, 
+													role = "Cliente", 
 													user_password = "123456",
-													username = "testUser" 
+													username = "testUser",
+													points = 0
 												};
 
 				context.client.Add(testClient);
