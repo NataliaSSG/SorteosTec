@@ -78,6 +78,11 @@ namespace SorteosTec.Pages.Models
         public async Task BuyProduct(int idClient, int idProduct) {
             // Obtener el producto
             string idProductLootBoxes = "";
+
+            // Lootboxes
+            int storedIdProduct = idProduct;
+            ItemsModel failSafe = new ItemsModel();
+            
             if (idProduct <= 3)
             {
                 switch (idProduct)
@@ -95,19 +100,29 @@ namespace SorteosTec.Pages.Models
                 idProduct = int.Parse(idProductLootBoxes);
             }
 
-            var product = await _httpClient.GetAsync("https://localhost:7256/Items/" + idProduct);
-            product.EnsureSuccessStatusCode();
-            var productJson = await product.Content.ReadAsStringAsync();
-            var productModel = JsonConvert.DeserializeObject<ItemsModel>(productJson);
-
             // Obtener el cliente
             var client = await _httpClient.GetAsync("https://localhost:7256/Cliente/" + idClient);
             client.EnsureSuccessStatusCode();
             var clientJson = await client.Content.ReadAsStringAsync();
+            Console.WriteLine(clientJson);
             var clientModel = JsonConvert.DeserializeObject<ClienteModel>(clientJson);
 
-            if (clientModel.points >= productModel.item_virtual_price) {
-                clientModel.points -= productModel.item_virtual_price;
+            // Obtener el producto
+            var product = await _httpClient.GetAsync("https://localhost:7256/Items/" + idProduct);
+            product.EnsureSuccessStatusCode();
+            var productJson = await product.Content.ReadAsStringAsync();
+            Console.WriteLine(productJson);
+            var productModel = JsonConvert.DeserializeObject<ItemsModel>(productJson);
+
+            if (storedIdProduct <= 3) {
+                var lootBox = await _httpClient.GetAsync("https://localhost:7256/Items/" + storedIdProduct);
+                lootBox.EnsureSuccessStatusCode();
+                var lootBoxJson = await lootBox.Content.ReadAsStringAsync();
+                Console.WriteLine(lootBoxJson);
+                var productModelLB = JsonConvert.DeserializeObject<ItemsModel>(lootBoxJson);
+
+                if (clientModel.points >= productModelLB.item_virtual_price) {
+                clientModel.points -= productModelLB.item_virtual_price;
                 var clientUpdateJson = JsonConvert.SerializeObject(clientModel);
                 var clientUpdateResponse = await _httpClient.PutAsync("https://localhost:7256/Cliente/" + idClient, new StringContent(clientUpdateJson, Encoding.UTF8, "application/json"));
                 clientUpdateResponse.EnsureSuccessStatusCode();
@@ -115,13 +130,39 @@ namespace SorteosTec.Pages.Models
                 
                 var invItem = new UserInventoryModel {id_client = idClient, 
                                                       id_item = idProduct};
+
                 var addItem = JsonConvert.SerializeObject(invItem);
-                Console.WriteLine(addItem);
+
+                Console.WriteLine("Elemento a agregar: " + addItem);
                 var productUpdateResponse = await _httpClient.PostAsync("https://localhost:7256/UserInventory/", new StringContent(addItem, Encoding.UTF8, "application/json"));                
                 productUpdateResponse.EnsureSuccessStatusCode();
+                }
+                else {
+                    Console.WriteLine("No tienes suficientes puntos para comprar este producto");
+                    throw new Exception("No tienes suficientes puntos para comprar este producto");
+                }
             }
             else {
-                throw new Exception("No tienes suficientes puntos para comprar este producto");
+                if (clientModel.points >= productModel.item_virtual_price) {
+                    clientModel.points -= productModel.item_virtual_price;
+                    var clientUpdateJson = JsonConvert.SerializeObject(clientModel);
+                    var clientUpdateResponse = await _httpClient.PutAsync("https://localhost:7256/Cliente/" + idClient, new StringContent(clientUpdateJson, Encoding.UTF8, "application/json"));
+                    clientUpdateResponse.EnsureSuccessStatusCode();
+
+                    
+                    var invItem = new UserInventoryModel {id_client = idClient, 
+                                                        id_item = idProduct};
+
+                    var addItem = JsonConvert.SerializeObject(invItem);
+
+                    Console.WriteLine("Elemento a agregar: " + addItem);
+                    var productUpdateResponse = await _httpClient.PostAsync("https://localhost:7256/UserInventory/", new StringContent(addItem, Encoding.UTF8, "application/json"));                
+                    productUpdateResponse.EnsureSuccessStatusCode();
+                }
+                else {
+                    Console.WriteLine("No tienes suficientes puntos para comprar este producto");
+                    throw new Exception("No tienes suficientes puntos para comprar este producto");
+                }
             }
         }
 
@@ -156,6 +197,7 @@ namespace SorteosTec.Pages.Models
             name = split[0];
             lastName = split[1];
     	}
+
 	}
 }
 

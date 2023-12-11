@@ -25,7 +25,7 @@ CREATE table Client(
 	user_password varchar(200) NOT NULL,
 	email varchar(60) NOT NULL,
 	sexo tinyint UNSIGNED NOT NULL,
-	points bigint default 0,
+	points bigint NOT NULL default 0,
     role varchar(60) 
 );
 
@@ -104,7 +104,16 @@ VALUES
 (11,'Discount 4', 0, 0, '0.25');
 
 
-INSERT INTO `Client` VALUES (7,'Nataliaaa','Natalia','Salgado','2002-05-22','696969','natsg@gmail.com',1,500,'Cliente'),(8,'SylviaPoyito','Sylvia','Cortes','2000-07-07','070707','sylviac@hotmail.com',2,750,'Cliente'),(9,'Sebs','Sebastian','Rosas','2003-02-06','420420','sebs@gmail.com',0,501,'Cliente'),(10,'Yu','Yudith','Palacios','2003-08-07','50069','yuyu@hotmail.com',1,600,'Cliente'),(11,'Shaqx','Isaac','Enriquez','1999-01-20','123456','shax@hotmail.com',0,1530,'Cliente'),(12,'AOkay','Narharis','Narharinio','2001-01-01','nananabatman','aokei@gmail.com',0,90,'Cliente'),(13,'lucia123','Lucia','Perez','1970-01-01','123','lucia@gmail.com',1,NULL,'Cliente'),(14,'ximena123','Ximena','Garcia','1960-01-01','123','ximena@gmail.com',1,NULL,'Cliente'),(15,'jose123','Jose','Montero','1980-01-01','123','jose@gmail.com',0,NULL,'Cliente'),(16,'manuel123','Manuel','Gomez','1970-01-01','123','manuel@gmail.com',0,49998000,'Cliente'),(17,'Admin','Sebastian','Rosas','1980-01-01','123','L01234567@tec.mx',0,NULL,'Admin');
+
+INSERT INTO Client (username, first_name, last_name, birth_date, user_password, email, sexo, points, role)
+VALUES
+('rosassebastian', 'Sebastian', 'Rosas', '2002-05-22', '06022003', 'rosassebastian2003@gmail.com',0, 800, 'Cliente'),
+('Nataliaaa', 'Natalia', 'Salgado', '2002-05-22', '696969', 'natsg@gmail.com',1, 500, 'Admin'),
+('SylviaPoyito', 'Sylvia', 'Cortes', '2000-07-07', '070707', 'sylviac@hotmail.com',2, 750, 'Admin'),
+('Sebs', 'Sebastian', 'Rosas', '2003-02-06', '420420', 'sebs@gmail.com',0, 501, 'Admin'),
+('Yu', 'Yudith', 'Palacios', '2003-08-07', '50069', 'yuyu@hotmail.com',1, 600, 'Admin'),
+('Shaqx', 'Isaac', 'Enriquez', '1999-01-20', '123456','shax@hotmail.com',0, 1530, 'Client'),
+('AOkay', 'Narharis', 'Narharinio', '2001-01-01', 'nananabatman', 'aokei@gmail.com',0, 90, 'Client');
 
 
 create view leaderboard as
